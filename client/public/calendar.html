@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>캘린더</title>
+    <link rel="stylesheet" href="./style/css/calendar.css" />
+
+    <!--font awesome-->
+    <script
+      src="https://kit.fontawesome.com/e4d6910b4e.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <section class="container">
+      <header>
+        <i class="fas fa-chevron-left arrow-icon" onclick="prevMonth();"></i>
+        <span class="month" onclick="goToday();"></span>
+        <i class="fas fa-chevron-right arrow-icon" onclick="nextMonth();"></i>
+      </header>
+
+      <table id="schedule" border="1">
+        <tr class="first">
+          <th style="color: #930000" id="eng_day">SUN</th>
+          <th>MON</th>
+          <th>TUE</th>
+          <th>WED</th>
+          <th>THU</th>
+          <th>FRI</th>
+          <th>SAT</th>
+        </tr>
+
+        <!-- <td class="td-select"><span class="select">14</span></td> -->
+      </table>
+    </section>
+  </body>
+  <script src="./style/js/calendar.js" async></script>
+</html>
