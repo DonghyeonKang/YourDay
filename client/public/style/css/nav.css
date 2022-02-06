@@ -1,0 +1,36 @@
+@import url(//fonts.googleapis.com/earlyaccess/nanummyeongjo.css);
+@import url("https://fonts.googleapis.com/css2?family=Varela+Round&display=swap");
+.nanummyeongjo * {
+  font-family: "Nanum Myeongjo", serif;
+}
+
+nav {
+  margin-top: 1%;
+  margin-bottom: 3%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.item {
+  font-family: "Nanum Myeongjo", serif;
+  color: white;
+  font-size: 2.5rem;
+}
+
+.nav-icon {
+  color: white;
+  font-size: 2.5rem;
+  margin-left: 0.7em;
+}
+.logo {
+  width: 7rem;
+  height: 7rem;
+  border: 4px solid white;
+  font-family: "Varela Round", sans-serif;
+  color: #f2f2f2;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
