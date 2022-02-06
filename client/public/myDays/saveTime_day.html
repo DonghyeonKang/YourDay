@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/frontend/public/myDays/saveTime_day.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Nanum+Myeongjo&family=Noto+Serif+KR:wght@200&display=swap"
+      rel="stylesheet"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <header class="header"></header>
+    <div class="container">
+      <section class="main_section">
+        <h2 class="main_section_header">튼튼소열이님의 하루는,</h2>
+        <div class="main_section_inner">
+          <aside class="menu">
+            <a class="menu_saveTime" href="#">수행한 시간</a>
+            <a class="menu_wasteTime" href="#">낭비한 시간</a>
+          </aside>
+          <div class="content">
+            <h2 class="content_title">오늘</h2>
+            <div class="content_inner">
+              <canvas id="pie-chart" width="50px" height="50px"></canvas>
+            </div>
+            <div class="content_comment">
+              <h3>Comment</h3>
+              <p>오늘 완수한 시간은 총 12시간입니다!</p>
+            </div>
+          </div>
+          <aside class="period_nav">
+            <a class="day" href="#">일</a>
+            <a class="week" href="/frontend/public/myDays/saveTime_week.html"
+              >주</a
+            >
+            <a class="month" href="#">월</a>
+            <a class="year" href="#">년</a>
+          </aside>
+        </div>
+      </section>
+    </div>
+  </body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+  <script>
+    new Chart(document.getElementById("pie-chart"), {
+      type: "pie",
+      data: {
+        labels: ["Africa", "Asia", "Europe", "Latin America", "North America"],
+        datasets: [
+          {
+            label: "Population (millions)",
+            backgroundColor: [
+              "#3e95cd",
+              "#8e5ea2",
+              "#3cba9f",
+              "#e8c3b9",
+              "#c45850",
+            ],
+            data: [2478, 5267, 734, 784, 433],
+          },
+        ],
+      },
+      options: {
+        title: {
+          display: true,
+          text: "Predicted world population (millions) in 2050",
+        },
+      },
+    });
+  </script>
+</html>
