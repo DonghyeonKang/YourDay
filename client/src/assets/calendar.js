@@ -4,7 +4,7 @@ const renderCalendar = () => {
   const viewYear = date.getFullYear();
   const viewMonth = date.getMonth();
 
-  eng_month = [
+  const eng_month = [
     "January",
     "February",
     "March",
