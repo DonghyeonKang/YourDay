@@ -11,7 +11,7 @@ body {
 }
 
 body::before {
-  background-image: url("/frontend/public/backgound.png");
+  background-image: url("../backgound.png");
   content: "";
   background-size: cover;
   background-position: 50% 50%;
