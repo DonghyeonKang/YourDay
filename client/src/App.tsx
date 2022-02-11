@@ -1,18 +1,20 @@
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Main from "./routes/Main";
 import MyPage from "./routes/MyPage";
-import MyPagesFriend from "./routes/MyPagesFriend";
 import "./App.css";
+import FriendList from "./routes/FriendList";
+import Edit from "./routes/Edit";
 
 function App() {
   return (
-    <div className="App">
-      <Router>
-        <Route path="/" element={ Main }/>
-        <Route path="/mypage" element={ MyPage }/>
-        <MyPagesFriend />
-      </Router>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Main />} />
+        <Route path="/mypage" element={<MyPage />} />
+        <Route path="/mypage/friendList" element={<FriendList />} />
+        <Route path="/mypage/friendList/edit" element={<Edit />} />
+      </Routes>
+    </Router>
   );
 }
 
