@@ -88,7 +88,6 @@ body::before{
   width: 10em;
   height: 25em;
   background-color: rgba(0, 0, 0, 0.25);
-  
   float: right;
 }
 
@@ -105,13 +104,13 @@ body::before{
   margin: 0 auto;
   display: flex;
 }
+
 .optionBox_inner input {
   background-color: rgba(0, 0, 0, 0.25);
   width: 8em;
   height: 1.7em;
   margin-top: 0.5em;
 }
-
 
 .search {
   float: right;

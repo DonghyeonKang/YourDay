@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Chart.css";
 import BarChart from "./BarChart";
 import PieChart from "./PieChart";
@@ -6,34 +6,56 @@ import PieChart from "./PieChart";
 interface propTypes {
   chartType: number;
   setChartType: (num: number) => void;
+  chartMode: number;
+  setChartMode: (num: number) => void;
   chartName: string;
   data: number[];
 }
 
-const chart = (props: propTypes) => {
-  let chartMode = 0;
-  
-  if (chartMode) {
+
+const Chart = (props: propTypes) => {
+  console.log(props.chartType);
+
+  const [chartMenuName, setChartMenuName] = useState([
+    "chart_menu_saveTime selected",
+    "chart_menu_wasteTime",
+  ]);
+
+  if (props.chartMode) {
     return (
       <>
         <div className="main_section_inner_content">
           <h2 className="content_title">{props.chartName}</h2>
           <div className="content_inner">
-            <PieChart data={props.data} />
-            <div className="explain_color">
-              <p>수행한 시간</p>
-              <p>낭비한 시간</p>
-              <p>미등록 시간</p>
-            </div>
+            <BarChart data={props.data} chartType={props.chartType} />
+            bar
+            <aside className="chart_menu">
+              <div
+                className={chartMenuName[0]}
+                onClick={() => {
+                  props.setChartType(0);
+                  setChartMenuName([
+                    "chart_menu_saveTime selected",
+                    "chart_menu_wasteTime",
+                  ]);
+                }}
+              >
+                수행한 시간
+              </div>
+              <div
+                className={chartMenuName[1]}
+                onClick={() => {
+                  props.setChartType(1);
+                  setChartMenuName([
+                    "chart_menu_saveTime",
+                    "chart_menu_wasteTime selected",
+                  ]);
+                }}
+              >
+                낭비한 시간
+              </div>
+            </aside>
           </div>
-          <aside className="menu">
-            <a className="menu_saveTime" onClick={() => (chartMode = 0)}>
-              수행한 시간
-            </a>
-            <a className="menu_wasteTime" onClick={() => (chartMode = 1)}>
-              낭비한 시간
-            </a>
-          </aside>
           <div className="content_comment">
             <h3>Comment</h3>
             <p>오늘 완수한 시간은 총 12시간입니다!</p>
@@ -47,21 +69,35 @@ const chart = (props: propTypes) => {
         <div className="main_section_inner_content">
           <h2 className="content_title">{props.chartName}</h2>
           <div className="content_inner">
-            <BarChart data={props.data} chartType={props.chartType}/>
-            <div className="explain_color">
-              <p>수행한 시간</p>
-              <p>낭비한 시간</p>
-              <p>미등록 시간</p>
-            </div>
+            <PieChart data={props.data} />
+            pie
+            <aside className="chart_menu">
+              <div
+                className={chartMenuName[0]}
+                onClick={() => {
+                  props.setChartType(0);
+                  setChartMenuName([
+                    "chart_menu_saveTime selected",
+                    "chart_menu_wasteTime",
+                  ]);
+                }}
+              >
+                수행한 시간
+              </div>
+              <div
+                className={chartMenuName[1]}
+                onClick={() => {
+                  props.setChartType(1);
+                  setChartMenuName([
+                    "chart_menu_saveTime",
+                    "chart_menu_wasteTime selected",
+                  ]);
+                }}
+              >
+                낭비한 시간
+              </div>
+            </aside>
           </div>
-          <aside className="menu">
-            <a className="menu_saveTime" onClick={() => (chartMode = 0)}>
-              수행한 시간
-            </a>
-            <a className="menu_wasteTime" onClick={() => (chartMode = 1)}>
-              낭비한 시간
-            </a>
-          </aside>
           <div className="content_comment">
             <h3>Comment</h3>
             <p>오늘 완수한 시간은 총 12시간입니다!</p>
@@ -72,4 +108,4 @@ const chart = (props: propTypes) => {
   }
 };
 
-export default chart;
+export default Chart;

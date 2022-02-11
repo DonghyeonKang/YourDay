@@ -39,37 +39,30 @@ html {
     display: flex;
 }
 
-.menu {
+.chart_menu {
     width: 20%;
-    border-right: 2px solid white;
     text-align: center;
 }
 
-.menu a {
+.chart_menu div {
     display: block;
-    text-decoration: none;
+    cursor: pointer;
+    margin-bottom: 1em;
 }
-
-.menu_saveTime {
-    color: #FFC2C2 !important;
-}
-
-.menu_wasteTime {
-    color: white;
-}
-
-
 
 .period_nav {
     width: 20%;
+    text-align: center;
+    font-size: 1.2rem;
+    border-right: 2px solid white;
 }
 
-.period_nav a {
+.period_nav div {
+    cursor: pointer;
     text-decoration: none;
-    color: white;
+    margin-bottom: 1em;
 }
 
-.period_nav .day {
+.selected {
     color: #FFC2C2;
-    border-bottom: 2px solid #FFC2C2;
 }

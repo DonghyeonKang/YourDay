@@ -11,7 +11,7 @@ import Edit from "./routes/Edit";
 
 function App() {
   return (
-<Router>
+    <Router>
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/mypage" element={<MyPage />} />
