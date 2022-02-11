@@ -1,10 +1,25 @@
 let date = new Date();
 
-const renderCalendar = () => {
+module.exports = {
+  renderCalendar: function () {
+    return renderCalendar();
+  },
+  prevMonth: function () {
+    return prevMonth();
+  },
+  nextMonth: function () {
+    return nextMonth();
+  },
+  goToday: function () {
+    return goToday();
+  },
+};
+
+export function renderCalendar() {
   const viewYear = date.getFullYear();
   const viewMonth = date.getMonth();
 
-  eng_month = [
+  const eng_month = [
     "January",
     "February",
     "March",
@@ -79,7 +94,7 @@ const renderCalendar = () => {
   // Dates 그리기
 
   document.querySelector("#schedule").innerHTML += dates.join("");
-};
+}
 
 renderCalendar();
 
