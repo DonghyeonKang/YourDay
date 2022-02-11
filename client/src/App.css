@@ -17,7 +17,7 @@ body {
 body::before{
   content: "";
   position: absolute;
-  background-image: url("/src/assets/icons/backgound.png");
+  background-image: url("./assets/backgound.png");
   background-size: cover;
   width:100%;
   height: 100%;

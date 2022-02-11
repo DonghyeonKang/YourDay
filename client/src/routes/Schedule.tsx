@@ -2,7 +2,7 @@ import React from "react";
 import "../css/schedule.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-export function Schedule() {
+export default function Schedule() {
   return (
     <div className="container">
       <div className="complete">기상의 완수률</div>
