@@ -1,5 +1,5 @@
 import React from "react";
-import "./Chart.css";
+import "./css/Chart.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Pie } from "react-chartjs-2";
 import { MDBContainer } from "mdbreact";
