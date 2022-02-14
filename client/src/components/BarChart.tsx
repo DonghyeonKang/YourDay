@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Bar } from "react-chartjs-2";
 import { MDBContainer } from "mdbreact";
 import { Chart, CategoryScale, registerables } from "chart.js";
+import { addAbortSignal } from "stream";
 
 interface propTypes {
   chartType: number;
@@ -12,8 +13,9 @@ interface propTypes {
 
 Chart.register(CategoryScale);
 Chart.register(...registerables);
-class ChartsPageBar extends React.Component {
-  state = {
+
+const chart = (props: propTypes) => {
+  const data = {
     dataBar: {
       labels: ["월", "화", "수", "목", "금", "토", "일"],
       datasets: [
@@ -58,20 +60,11 @@ class ChartsPageBar extends React.Component {
     },
   };
 
-  render() {
-    return (
-      <>
-        <MDBContainer>
-          <Bar data={this.state.dataBar} options={this.state.options} />
-        </MDBContainer>
-      </>
-    );
-  }
-}
-
-const chart = (props: propTypes) => {
   return (
     <>
+      <MDBContainer>
+        <Bar data={data.dataBar} options={data.options} />
+      </MDBContainer>
     </>
   );
 };

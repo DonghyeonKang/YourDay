@@ -10,8 +10,8 @@ interface propTypes {
   data: number[];
 }
 
-class ChartsPagePie extends React.Component {
-  state = {
+const chart = (props: propTypes) => {
+  const data = {
     dataPie: {
       labels: ["수행한 시간", "미등록 시간", "낭비한 시간"],
       datasets: [
@@ -22,22 +22,13 @@ class ChartsPagePie extends React.Component {
         },
       ],
     },
-  };
-
-  render() {
-    return (
-      <>
-        <MDBContainer>
-          <Pie data={this.state.dataPie} options={{ responsive: true }} />
-        </MDBContainer>
-      </>
-    );
   }
-}
 
-const chart = (props: propTypes) => {
   return (
     <>
+        <MDBContainer>
+          <Pie data={data.dataPie} options={{ responsive: true }} />
+        </MDBContainer>
     </>
   );
 };

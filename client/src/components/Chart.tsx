@@ -28,7 +28,6 @@ const Chart = (props: propTypes) => {
           <h2 className="content_title">{props.chartName}</h2>
           <div className="content_inner">
             <BarChart data={props.data} chartType={props.chartType} />
-            bar
             <aside className="chart_menu">
               <div
                 className={chartMenuName[0]}
@@ -70,33 +69,6 @@ const Chart = (props: propTypes) => {
           <h2 className="content_title">{props.chartName}</h2>
           <div className="content_inner">
             <PieChart data={props.data} />
-            pie
-            <aside className="chart_menu">
-              <div
-                className={chartMenuName[0]}
-                onClick={() => {
-                  props.setChartType(0);
-                  setChartMenuName([
-                    "chart_menu_saveTime selected",
-                    "chart_menu_wasteTime",
-                  ]);
-                }}
-              >
-                수행한 시간
-              </div>
-              <div
-                className={chartMenuName[1]}
-                onClick={() => {
-                  props.setChartType(1);
-                  setChartMenuName([
-                    "chart_menu_saveTime",
-                    "chart_menu_wasteTime selected",
-                  ]);
-                }}
-              >
-                낭비한 시간
-              </div>
-            </aside>
           </div>
           <div className="content_comment">
             <h3>Comment</h3>

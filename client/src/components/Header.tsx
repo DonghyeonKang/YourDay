@@ -1,5 +1,5 @@
 import React from "react";
-import "./header.css";
+import "./Header.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function Header() {
