@@ -21,13 +21,13 @@ const Chart = (props: propTypes) => {
     "chart_menu_wasteTime",
   ]);
 
-  if (props.chartMode) {
+  if (props.chartMode != 0) {
     return (
       <>
         <div className="main_section_inner_content">
           <h2 className="content_title">{props.chartName}</h2>
           <div className="content_inner">
-            <BarChart data={props.data} chartType={props.chartType} />
+            <BarChart data={props.data} chartType={props.chartType}  chartMode={props.chartMode}/>
             <aside className="chart_menu">
               <div
                 className={chartMenuName[0]}
@@ -68,7 +68,7 @@ const Chart = (props: propTypes) => {
         <div className="main_section_inner_content">
           <h2 className="content_title">{props.chartName}</h2>
           <div className="content_inner">
-            <PieChart data={props.data} />
+            <PieChart data={props.data}/>
           </div>
           <div className="content_comment">
             <h3>Comment</h3>

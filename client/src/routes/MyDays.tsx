@@ -4,27 +4,43 @@ import Header from "../components/Header";
 import Chart from "../components/Chart/Chart";
 import styled from "styled-components";
 
-const getChartData = (chartType: number) => {
-  //api 요청해서 데이터 받아야함
-  if (chartType == 0) {
-    const y_element = [20, 40, 70, 0, 0, 0, 0];
-    return y_element;
-  } else if (chartType == 1) {
-    const y_element = [20, 70, 20, 40];
-    return y_element;
-  } else if (chartType == 2) {
-    const y_element = [20, 70, 20, 40, 20, 70, 20, 40, 0, 0, 0, 0];
-    return y_element;
-  } else {
+interface propTypes {
+  id: number;
+}
+
+const chartDataOption = (chartType: number, props: propTypes) => {
+  //TODO 데이터 받아와서 나눠줘야함
+  const data = getData(props.id);
+
+  if (chartType == 0) {  // 주
     const pieData = [16, 7, 1]; // saveTime: 16, wasteTime: 7, Unregistered: 1,
     return pieData;
+  } else if (chartType == 1) {  //월
+    const y_element = [20, 15, 10, 9, 11, 17, 11];
+    return y_element;
+  } else if (chartType == 2) {  // 년
+    const y_element = [20, 21, 20, 11];
+    return y_element;
+  } else {
+    const y_element = [20, 8, 12, 20, 20, 18, 20, 10, 10, 24, 21, 12];
+    return y_element;
   }
 };
 
-function MyDays() {
+async function getData(id: number) {
+  try {
+    const data = await fetch(`/mydays/data/${id}`);
+    return data;
+  } catch (error) {
+    console.log(error);
+    
+  }
+}
+
+function MyDays(props: propTypes) {
   const [chartType, setChartType] = useState(0);
   const [chartMode, setChartMode] = useState(0);
-  const [data, setData] = useState(getChartData(0));
+  const [data, setData] = useState(chartDataOption(0, props));
   const [chartName, setChartName] = useState("일");
   const [navButtonName, setNavButtonName] = useState([
     "day selected",
@@ -46,7 +62,7 @@ function MyDays() {
                 onClick={() => {
                   setChartType(0);
                   setChartMode(0);
-                  setData(getChartData(0));
+                  setData(chartDataOption(0, props));
                   setChartName("일");
                   setNavButtonName(["day selected", "week", "month", "year"]);
                 }}
@@ -58,7 +74,7 @@ function MyDays() {
                 onClick={() => {
                   setChartType(1);
                   setChartMode(1);
-                  setData(getChartData(1));
+                  setData(chartDataOption(1, props));
                   setChartName("주");
                   setNavButtonName(["day", "week selected", "month", "year"]);
                 }}
@@ -70,7 +86,7 @@ function MyDays() {
                 onClick={() => {
                   setChartType(2);
                   setChartMode(2);
-                  setData(getChartData(2));
+                  setData(chartDataOption(2, props));
                   setChartName("월");
                   setNavButtonName(["day", "week", "month selected", "year"]);
                 }}
@@ -82,7 +98,7 @@ function MyDays() {
                 onClick={() => {
                   setChartType(3);
                   setChartMode(3);
-                  setData(getChartData(3));
+                  setData(chartDataOption(3, props));
                   setChartName("년");
                   setNavButtonName(["day", "week", "month", "year selected"]);
                 }}
