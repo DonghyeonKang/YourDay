@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./css/MyDays.css";
-import Header from "../components/Header";
 import Chart from "../components/Chart/Chart";
 import styled from "styled-components";
 
@@ -51,7 +50,6 @@ function MyDays(props: propTypes) {
   
   return (
     <>
-      <Header />
       <div className="mydays_container">
         <section className="main_section">
           <h2 className="main_section_header">튼튼소열이님의 하루는,</h2>

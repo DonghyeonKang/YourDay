@@ -1,28 +1,22 @@
-@import url(//fonts.googleapis.com/earlyaccess/nanummyeongjo.css);
+/* 방법 1 */
+/* @import url(//fonts.googleapis.com/earlyaccess/nanummyeongjo.css);
 @import url("https://fonts.googleapis.com/css2?family=Varela+Round&display=swap");
 .nanummyeongjo * {
   font-family: "Nanum Myeongjo", serif;
-}
+} */
 
-nav {
-  margin-top: 1%;
-  margin-bottom: 3%;
+/* 방법 2 */
+/* @font-face {
+  font-family: "NanumMyeongjo";
+  src: url("../fonts/NanumMyeongjo-Bold.ttf") format("truetype");
+} */
+
+.header {
+  color: #ffffff;
   display: flex;
-  justify-content: space-around;
-  align-items: center;
+  height: 20%;
 }
 
-.item {
-  font-family: "Nanum Myeongjo", serif;
-  color: white;
-  font-size: 2.5rem;
-}
-
-.nav-icon {
-  color: white;
-  font-size: 2.5rem;
-  margin-left: 0.7em;
-}
 .logo {
   width: 7rem;
   height: 7rem;
@@ -33,4 +27,33 @@ nav {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+.main_menu {
+  margin-top: 1%;
+  margin-bottom: 3%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  font-family: "NanumMyeongjo", serif;
+  font-style: normal;
+  font-weight: normal;
+}
+
+.main_menu a {
+  color: #ffffff;
+  font: 1.2em;
+}
+
+.main_menu a:hover {
+  color: #ee8484;
+  text-decoration: none;
+}
+
+.icon {
+  color: white;
+  font-size: 2.5rem;
+  margin-left: 0.7em;
 }
