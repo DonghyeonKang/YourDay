@@ -1,6 +1,5 @@
-import "./header.css";
 import React from "react";
-
+import "./Header.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faUser, faBell } from "@fortawesome/free-solid-svg-icons";

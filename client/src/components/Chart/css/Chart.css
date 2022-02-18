@@ -1,0 +1,44 @@
+.main_section_inner_content {
+    width: 60%;
+    margin: 0 0 0 2em;
+}
+
+.content_title {
+    margin: 0 0 1em 0;
+    text-align: center;
+}
+
+.content_inner {
+    height: auto;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2.2rem;
+}
+
+.content_inner .container {
+    width: 100%;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.content_inner .container canvas{
+    max-height: 25em !important;
+}
+
+#pie-chart {
+    margin: 0 auto 0 auto;
+    width: 20em !important;
+    height: 20em !important;
+}
+.explain_color {
+    margin-left: 2em;
+}
+
+.content_comment {
+    min-height: 10em;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.content_comment p {
+    padding: 0 1em 0 1em;
+}
