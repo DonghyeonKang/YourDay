@@ -8,12 +8,14 @@ import Time from "./routes/Time";
 import "./App.css";
 import FriendList from "./routes/FriendList";
 import Edit from "./routes/Edit";
+import Header from "./components/Header";
 
 function App() {
   return (
-    <Router>
+<Router>
+      <Header />
       <Routes>
-        <Route path="/" element={<Main />} />
+        <Route path="/Time" element={<Main />} />
         <Route path="/mypage" element={<MyPage />} />
         <Route path="/mydays" element={<MyDays />} />
         <Route path="/mypage/friendList" element={<FriendList />} />

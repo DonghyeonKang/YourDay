@@ -1,6 +1,7 @@
 import { OptionBox } from './optionBox';
 import { Link } from 'react-router-dom';
 import { EditProps } from '../../routes/Edit';
+import "../../routes/css/MyPage.css";
 
 export function PeriodNav(prop: EditProps) {
     return (
