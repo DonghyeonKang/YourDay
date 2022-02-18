@@ -3,7 +3,7 @@ import "../../routes/css/MyPage.css";
 
 function InfoNav() {
   return (
-    <aside className="menu">
+    <aside className="mypage_menu">
       <Link className="menu_profile" to="/mypage">
         프로필
       </Link>

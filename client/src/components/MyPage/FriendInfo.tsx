@@ -33,9 +33,9 @@ export function FriendInfo() {
       <div className="info">
         <ul className="info_inner">
           {users.map((user) => 
-            <h3> 
+            <span>
               <Link to={`/${user.id}`}> {user.name} </Link> 
-            </h3>
+            </span>
           )}
         </ul>
       </div>

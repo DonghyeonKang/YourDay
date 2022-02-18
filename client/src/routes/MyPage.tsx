@@ -2,8 +2,8 @@
 import "./css/MyPage.css";
 
 import InfoNav from "../components/MyPage/InfoNav";
-import { Info } from '../components/MyPage/Info';
-
+import { Info } from "../components/MyPage/Info";
+import Header from "../components/Header";
 
 function Profile() {
   return (
@@ -16,14 +16,16 @@ function Profile() {
 
 function MyPage() {
   return (
-    <div className="container">
-      <section className="main_section">
-        <h1 className="main_section-header">소열님의 정보,</h1>
-        <div className="main_section-inner">
-          <Profile />
-        </div>
-      </section>
-    </div>
+    <>
+      <div className="mypage_container">
+        <section className="mypage_main-section">
+          <h1 className="mypage_main-header">소열님의 정보,</h1>
+          <div className="mypage_main-inner">
+            <Profile />
+          </div>
+        </section>
+      </div>
+    </>
   );
 }
 

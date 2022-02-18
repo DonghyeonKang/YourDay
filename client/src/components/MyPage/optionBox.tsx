@@ -1,5 +1,9 @@
+import "../../routes/css/MyPage.css";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
+
 import { PeriodNavProps } from './PeriodNav';
 import { useState } from 'react';
 
@@ -13,6 +17,7 @@ export function OptionBox(prop: PeriodNavProps) {
       } = e.target;
       setFriendName(name);
     }
+    const faPropIcon = faSearch as IconProp;
 
     return (
       <div className="optionBox">
@@ -21,7 +26,7 @@ export function OptionBox(prop: PeriodNavProps) {
           <form>
             <div className="optionBox_inner">
               <input value={friendName} onChange={onChange} name="name"></input>
-              <FontAwesomeIcon type="submit" icon={faSearch} className="search" />
+              <FontAwesomeIcon type="submit" icon={faPropIcon} className="search" />
             </div>
           </form>
         ) : (

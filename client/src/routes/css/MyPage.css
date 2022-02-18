@@ -1,32 +1,24 @@
-
-body {
-  position: absolute;
-}
-
-body::before{
-  z-index: -1;
-}
-
-.container {
+.mypage_container {
   font-family: "NanumMyeongjo", serif;
   font-style: normal;
   font-weight: normal;
   color: #ffffff;
   top: 0;
-  margin: 25em 0 0 0;
+  margin: 0 0 0 0;
+  height: 10%;
 }
 
 /* main */
-.main_section-header {
+.mypage_main-header {
   font-size: 2em;
 }
 
-.main_section-inner {
+.mypage_main-inner {
   display: flex;
 }
 
 /* menu */
-.menu {
+.mypage_menu {
   width: 20%;
   height: 25em;
   border-right: 2px solid white;
@@ -34,10 +26,16 @@ body::before{
   position: absolute;
 }
 
-.menu a {
-  display: block;
+.mypage_menu a {
+  color: #ffffff;
+  display: grid;
+}
+
+.mypage_menu a:hover {
+  color: #ee8484;
   text-decoration: none;
 }
+
 
 .menu_profile {
   color: #ee8484;
@@ -64,7 +62,7 @@ body::before{
 /* option */
 .option {
   width: 20%;
-  margin-right: 2em;
+  margin: 0 2em 0 0;
 }
 
 .option_nav {
@@ -78,6 +76,12 @@ body::before{
   border-bottom: 2px solid white;
 }
 
+.option_nav a:hover {
+  color: #ee8484;
+  text-decoration: none;
+}
+
+
 .option_nav .list {
   color: white;
   text-decoration: none;
@@ -85,10 +89,9 @@ body::before{
 }
 
 .optionBox {
-  width: 10em;
+  width: 12em;
   height: 25em;
   background-color: rgba(0, 0, 0, 0.25);
-  
   float: right;
 }
 
@@ -111,7 +114,6 @@ body::before{
   height: 1.7em;
   margin-top: 0.5em;
 }
-
 
 .search {
   float: right;

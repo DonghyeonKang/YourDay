@@ -2,11 +2,11 @@ import { Body, Controller, Delete, Get, Param, ParseIntPipe, Post } from '@nestj
 import { User } from './user.entity';
 import { UsersService } from './users.service';
 import { CreateUserDto, SearchUserDto } from './dto/create-user.dto';
+import { AuthService } from 'src/auth/auth.service';
 
 @Controller('mypage')
 export class UsersController {
     constructor(private usersService: UsersService) {}
-    
     
 
     @Get('/')
@@ -28,8 +28,13 @@ export class UsersController {
 
     //윤수 만들 때,
     @Post('/login')
-    createUser(@Body() createUserDto: CreateUserDto): Promise<User>{
-        return this.usersService.createUser(createUserDto);
+    createUser(@Body() a): Promise<User>{
+        // createUserDto.name = ' ';
+        console.log(`유저정보: ${a}`);
+        //이렇게 하면 undefined 뜸 Body가 아니라, 다른 걸 써야할지도
+        
+        return a;
+        // return this.usersService.createUser(createUserDto);
     }
 
    
