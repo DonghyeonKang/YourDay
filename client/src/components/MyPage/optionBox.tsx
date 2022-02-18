@@ -21,7 +21,6 @@ export function OptionBox(prop: PeriodNavProps) {
           <form>
             <div className="optionBox_inner">
               <input value={friendName} onChange={onChange} name="name"></input>
-              <FontAwesomeIcon type="submit" icon={faSearch} className="search" />
             </div>
           </form>
         ) : (

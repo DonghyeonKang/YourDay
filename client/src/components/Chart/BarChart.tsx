@@ -1,25 +1,51 @@
 import React from "react";
-import "./Chart.css";
+import "./css/Chart.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Bar } from "react-chartjs-2";
 import { MDBContainer } from "mdbreact";
 import { Chart, CategoryScale, registerables } from "chart.js";
+import { addAbortSignal } from "stream";
+import { propTypes } from "react-bootstrap/esm/Image";
 
 interface propTypes {
   chartType: number;
   data: number[];
+  chartMode: number;
 }
 
 Chart.register(CategoryScale);
 Chart.register(...registerables);
-class ChartsPageBar extends React.Component {
-  state = {
+
+const chart = (props: propTypes) => {
+  let x_element = ["월", "화", "수", "목", "금", "토", "일"];
+  if (props.chartMode == 1) {
+    x_element = ["월", "화", "수", "목", "금", "토", "일"];
+  } else if (props.chartMode == 2) {
+    x_element = ["1주차", "2주차", "3주차", "4주차"];
+  } else if (props.chartMode == 3){
+    x_element = [
+      "1월",
+      "2월",
+      "3월",
+      "4월",
+      "5월",
+      "6월",
+      "7월",
+      "8월",
+      "9월",
+      "10월",
+      "11월",
+      "12월",
+    ];
+  }
+
+  const data = {
     dataBar: {
-      labels: ["월", "화", "수", "목", "금", "토", "일"],
+      labels: x_element,
       datasets: [
         {
-          label: "월별 평균 수행시간",
-          data: [12, 19, 3, 5, 2, 3, 12],
+          label: "수행시간",
+          data: props.data,
           backgroundColor: [
             "rgba(255, 134,159,0.4)",
             "rgba(98,  182, 239,0.4)",
@@ -58,20 +84,11 @@ class ChartsPageBar extends React.Component {
     },
   };
 
-  render() {
-    return (
-      <>
-        <MDBContainer>
-          <Bar data={this.state.dataBar} options={this.state.options} />
-        </MDBContainer>
-      </>
-    );
-  }
-}
-
-const chart = (props: propTypes) => {
   return (
     <>
+      <MDBContainer>
+        <Bar data={data.dataBar} options={data.options} />
+      </MDBContainer>
     </>
   );
 };
