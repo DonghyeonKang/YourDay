@@ -6,7 +6,7 @@ exports.typeORMConfig = {
     host: "localhost",
     port: 3306,
     username: "root",
-    password: "password",
+    password: "gold3819",
     database: "user_db",
     entities: [__dirname + "/../**/*.entity.{js,ts}"],
     synchronize: true

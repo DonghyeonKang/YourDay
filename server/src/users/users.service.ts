@@ -12,7 +12,16 @@ export class UsersService {
         private userRepository: UserRepository,
     ){}
 
-    
+    googleLogin(req){
+        if(!req.user){
+            return "No User from google"
+        }
+        return { 
+            message : 'User Info from Google',
+            user: req.user
+        }
+        
+    }
 
     //친구목록 다 찾기
     getAllUser(): Promise<any> {
