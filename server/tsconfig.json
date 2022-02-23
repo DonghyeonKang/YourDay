@@ -1,22 +1,21 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
-    "declaration": true,
-    "removeComments": true,
+    "module": "commonjs", // 모듈 설정
+    "declaration": true, //.d.ts 파일의 생성 여부
+    "removeComments": true,  // 주석 삭제
     "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "allowSyntheticDefaultImports": true,
-    "target": "es2017",
-    "sourceMap": true,
-    "outDir": "./dist",
-    "baseUrl": "./",
+    "experimentalDecorators": true, // ES Decorator에 대한 실험적 기능 사용 여부
+    "allowSyntheticDefaultImports": true, // export default 를 export 한 값들을 가지는 객체로 설정
+    "target": "es2017", // 사용할 ECMAScript 버전 설정
+    "sourceMap": true, // 소스맵(*.map) 파일 생성 여부
+    "outDir": "./dist", // 출력할 디렉토리
+    "baseUrl": "./", // Non-relativ 모듈 혹은 paths 옵션의 기준 디렉토리
     "incremental": true,
-    "skipLibCheck": true,
-    "strictNullChecks": false,
-    "noImplicitAny": false,
+    "skipLibCheck": true, // 모든 선언파일(*.d.ts)의 유형검사를 건너뛸지 여부
+    "strictNullChecks": false, // null과 undefined 타입 구분 여부
+    "noImplicitAny": false, // any타입 금지
     "strictBindCallApply": false,
-    "forceConsistentCasingInFileNames": false,
-    "noFallthroughCasesInSwitch": false
-    
+    "forceConsistentCasingInFileNames": false, // 파일명에 대소문자 구분하지 않아도 되는 기능 사용 여부
+    "noFallthroughCasesInSwitch": false, // 잘못 적혔다고 판단되는 switch문에 대한 에러 발생
   }
 }
