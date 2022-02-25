@@ -9,13 +9,11 @@ interface propTypes {
   chartMode: number;
   setChartMode: (num: number) => void;
   chartName: string;
-  data: number[];
+  data: number[][];
 }
 
 
-const Chart = (props: propTypes) => {
-  console.log(props.chartType);
-
+const Chart = (props: propTypes) => {  
   const [chartMenuName, setChartMenuName] = useState([
     "chart_menu_saveTime selected",
     "chart_menu_wasteTime",

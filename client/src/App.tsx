@@ -18,7 +18,7 @@ function App() {
       <Routes>
         <Route path="/Time" element={<Main />} />
         <Route path="/mypage" element={<MyPage />} />
-        <Route path="/mydays" element={<MyDays id={userid}/>} />
+        <Route path="/mydays" element={<MyDays />} />
         <Route path="/mypage/friendList" element={<FriendList />} />
         <Route path="/mypage/friendList/edit" element={<Edit />} />
       </Routes>

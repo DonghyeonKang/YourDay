@@ -9,7 +9,7 @@ import { propTypes } from "react-bootstrap/esm/Image";
 
 interface propTypes {
   chartType: number;
-  data: number[];
+  data: number[][];
   chartMode: number;
 }
 
@@ -39,13 +39,16 @@ const chart = (props: propTypes) => {
     ];
   }
 
+  const timedata = props.data.map(v => v[1]);
+  console.log(timedata);
+  
   const data = {
     dataBar: {
       labels: x_element,
       datasets: [
         {
           label: "수행시간",
-          data: props.data,
+          data: timedata,
           backgroundColor: [
             "rgba(255, 134,159,0.4)",
             "rgba(98,  182, 239,0.4)",
