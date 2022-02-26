@@ -2,23 +2,23 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Main from "./routes/Main";
 import MyDays from "./routes/MyDays";
 import MyPage from "./routes/MyPage";
+import Intro from "./routes/Intro";
 import Login from "./routes/Login";
 import Schedule from "./routes/Schedule";
 import Time from "./routes/Time";
 import "./App.css";
 import FriendList from "./routes/FriendList";
 import Edit from "./routes/Edit";
-import Header from "./components/Header";
 
 function App() {
-  const userid = 1212;
   return (
-<Router>
-      <Header />
+    <Router>
       <Routes>
+        <Route path="/" element={<Intro />} />
         <Route path="/Time" element={<Main />} />
         <Route path="/mypage" element={<MyPage />} />
         <Route path="/mydays" element={<MyDays />} />
+        <Route path="/schedule" element={<Schedule />} />
         <Route path="/mypage/friendList" element={<FriendList />} />
         <Route path="/mypage/friendList/edit" element={<Edit />} />
       </Routes>

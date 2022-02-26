@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "./css/MyDays.css";
 import Chart from "../components/Chart/Chart";
+import Header from "../components/Header";
+
 interface dataTypes {
   chart_id: number;
   time: number;
@@ -60,6 +62,7 @@ function MyDays() {
 
   return (
     <>
+      <Header selected={2}/>
       <div className="mydays_container">
         <section className="main_section">
           <h2 className="main_section_header">튼튼소열이님의 하루는,</h2>
