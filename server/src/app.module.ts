@@ -5,7 +5,16 @@ import { typeORMConfig } from './configs/typeorm.config';
 import { AuthModule } from './auth/auth.module';
 @Module({
   imports: [
-    TypeOrmModule.forRoot(typeORMConfig),
+    TypeOrmModule.forRoot({
+      "type": "mysql",
+      "host": "localhost",
+      "port": 3306,
+      "username": "root",
+      "password": "gold3819",
+      "database": "user_db",
+      "entities": ["dist/**/*.entity{.ts,.js}"],
+      "synchronize": true
+    }),
     UsersModule,
     AuthModule],
 })
