@@ -1,45 +1,62 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./css/MyDays.css";
 import Chart from "../components/Chart/Chart";
+import Header from "../components/Header";
 import styled from "styled-components";
+import img from "../assets/backgound.png";
 
-interface propTypes {
-  id: number;
+const StyledDiv = styled.div`
+  & {
+    position: relative;
+    width: 100%;
+    min-height: 100%;
+    height: auto;
+    margin: 0;
+    background-image: url("${img}");
+    background-size: cover; 
+  }
+  
+  &:before {
+    content: "";
+    background-position: 50% 50%;
+    z-index: -100;
+    opacity: 0.9;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+  }
+`;
+
+interface dataTypes {
+  chart_id: number;
+  time: number;
+  date: number;
+  mode: number;
+  member_id: string;
 }
 
-const chartDataOption = (chartType: number, props: propTypes) => {
-  //TODO 데이터 받아와서 나눠줘야함
-  const data = getData(props.id);
-
-  if (chartType == 0) {  // 주
-    const pieData = [16, 7, 1]; // saveTime: 16, wasteTime: 7, Unregistered: 1,
-    return pieData;
-  } else if (chartType == 1) {  //월
-    const y_element = [20, 15, 10, 9, 11, 17, 11];
-    return y_element;
-  } else if (chartType == 2) {  // 년
-    const y_element = [20, 21, 20, 11];
-    return y_element;
-  } else {
-    const y_element = [20, 8, 12, 20, 20, 18, 20, 10, 10, 24, 21, 12];
-    return y_element;
-  }
-};
-
-async function getData(id: number) {
-  try {
-    const data = await fetch(`/mydays/data/${id}`);
-    return data;
-  } catch (error) {
-    console.log(error);
-    
-  }
+// 가져온 데이터 수정
+function editData(data: dataTypes[], n: number): number[][] {
+  const tmp = data.filter((v) => v.mode == n);
+  const editedData = tmp.map((a) => {
+    return [a.date, a.time];
+  });
+  return editedData.sort();
 }
 
-function MyDays(props: propTypes) {
+//TODO 세션ID 리턴
+function getUserId() {}
+
+//mode 별 데이터 리턴
+function getDataByMode(mode: number, data: number[][][]): number[][] {
+  return data[mode];
+}
+
+function MyDays() {
   const [chartType, setChartType] = useState(0);
   const [chartMode, setChartMode] = useState(0);
-  const [data, setData] = useState(chartDataOption(0, props));
+  const [dataset, setDataset] = useState([[[0]]]);
+  const [data, setData] = useState([[0]]);
   const [chartName, setChartName] = useState("일");
   const [navButtonName, setNavButtonName] = useState([
     "day selected",
@@ -47,9 +64,29 @@ function MyDays(props: propTypes) {
     "month",
     "year",
   ]);
-  
+
+  // 데이터 받아오기
+  useEffect(() => {
+    fetch(`/mydays/123123413412414`) //TODO id로 바꿔줘야함
+      .then((res) => res.json())
+      .then(
+        (result) => {
+          const tmp = [];
+
+          for (let i = 0; i < 3; i++) {
+            tmp.push(editData(result, i));
+          }
+          setDataset(tmp);
+        }, // 주의: 컴포넌트에 있는 실제 버그로 인해 발생한 예외를 놓치지 않고 처리하기 위해서는 catch() 블록보다는 여기서 에러를 다뤄주는 게 중요합니다.
+        (error) => {
+          console.log(error);
+        }
+      );
+  }, []);
+
   return (
-    <>
+    <StyledDiv>
+      <Header selected={2} />
       <div className="mydays_container">
         <section className="main_section">
           <h2 className="main_section_header">튼튼소열이님의 하루는,</h2>
@@ -60,7 +97,6 @@ function MyDays(props: propTypes) {
                 onClick={() => {
                   setChartType(0);
                   setChartMode(0);
-                  setData(chartDataOption(0, props));
                   setChartName("일");
                   setNavButtonName(["day selected", "week", "month", "year"]);
                 }}
@@ -72,8 +108,8 @@ function MyDays(props: propTypes) {
                 onClick={() => {
                   setChartType(1);
                   setChartMode(1);
-                  setData(chartDataOption(1, props));
                   setChartName("주");
+                  setData(getDataByMode(0, dataset));
                   setNavButtonName(["day", "week selected", "month", "year"]);
                 }}
               >
@@ -84,8 +120,8 @@ function MyDays(props: propTypes) {
                 onClick={() => {
                   setChartType(2);
                   setChartMode(2);
-                  setData(chartDataOption(2, props));
                   setChartName("월");
+                  setData(getDataByMode(1, dataset));
                   setNavButtonName(["day", "week", "month selected", "year"]);
                 }}
               >
@@ -96,8 +132,8 @@ function MyDays(props: propTypes) {
                 onClick={() => {
                   setChartType(3);
                   setChartMode(3);
-                  setData(chartDataOption(3, props));
                   setChartName("년");
+                  setData(getDataByMode(2, dataset));
                   setNavButtonName(["day", "week", "month", "year selected"]);
                 }}
               >
@@ -115,7 +151,7 @@ function MyDays(props: propTypes) {
           </div>
         </section>
       </div>
-    </>
+    </StyledDiv>
   );
 }
 

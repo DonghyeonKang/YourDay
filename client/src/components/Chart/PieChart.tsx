@@ -7,7 +7,7 @@ import { Chart, ArcElement } from "chart.js";
 Chart.register(ArcElement);
 
 interface propTypes {
-  data: number[];
+  data: number[][];
 }
 
 const chart = (props: propTypes) => {

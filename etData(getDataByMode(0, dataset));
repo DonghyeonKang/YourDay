@@ -1,0 +1,331 @@
+[33mcommit e4465a75f351da3b81b2febf518715aeaf2b2601[m[33m ([m[1;36mHEAD -> [m[1;32mdong[m[33m, [m[1;31morigin/dong[m[33m)[m
+Author: DongHyeon Kang <86303312+DonghyeonKang@users.noreply.github.com>
+Date:   Fri Feb 25 23:50:42 2022 +0900
+
+    Connect api to front
+
+[33mcommit 7363cdd070e983df8aa5a058829627d5cf157866[m
+Author: DongHyeon Kang <86303312+DonghyeonKang@users.noreply.github.com>
+Date:   Wed Feb 23 16:45:07 2022 +0900
+
+    Update tsconfig.json
+
+[33mcommit f4a248b3ae21574b095154756219a7dbf7af8c9c[m
+Author: DongHyeon Kang <86303312+DonghyeonKang@users.noreply.github.com>
+Date:   Wed Feb 23 16:44:59 2022 +0900
+
+    Update typeorm.config.ts
+
+[33mcommit 6ad5cdbbcfa31ad5e8f6eb2f3d3367008c79b1cc[m
+Author: DongHyeon Kang <86303312+DonghyeonKang@users.noreply.github.com>
+Date:   Wed Feb 23 16:43:41 2022 +0900
+
+    Delete Database directory
+
+[33mcommit 55f357bde9a879d292d6205cae44a06ef3ba90c2[m
+Author: DongHyeon Kang <86303312+DonghyeonKang@users.noreply.github.com>
+Date:   Wed Feb 23 16:40:34 2022 +0900
+
+    Update app.module adding chartmodule
+
+[33mcommit 0392c3b6df73d2a83aca371314aedf2cade4de31[m
+Author: DongHyeon Kang <86303312+DonghyeonKang@users.noreply.github.com>
+Date:   Wed Feb 23 16:27:07 2022 +0900
+
+    Update .gitignore
+
+[33mcommit 6cd70a1011b45d35d9d80b1910779c5fc7868d81[m
+Author: DongHyeon Kang <86303312+DonghyeonKang@users.noreply.github.com>
+Date:   Wed Feb 23 16:26:19 2022 +0900
+
+    Add getChartData
+
+[33mcommit fbf34206412795c194280eedbf50e648508fa41a[m
+Author: DongHyeon Kang <86303312+DonghyeonKang@users.noreply.github.com>
+Date:   Fri Feb 18 12:34:42 2022 +0900
+
+    Fix merge error
+
+[33mcommit 63c1527602f222117e5a66331247f0f34b413630[m
+Merge: ef9d8d2 b1b781a
+Author: DonghyeonKang <86303312+DonghyeonKang@users.noreply.github.com>
+Date:   Fri Feb 18 12:28:49 2022 +0900
+
+    Merge pull request #14 from DonghyeonKang/yoon
+    
+    Create UserInfo Backend
+
+[33mcommit b1b781a4886e62abfe0ff1c9e675acfb0218c8e0[m[33m ([m[1;31morigin/yoon[m[33m, [m[1;32myoon[m[33m)[m
+Merge: e1b9e90 ef9d8d2
+Author: DongHyeon Kang <86303312+DonghyeonKang@users.noreply.github.com>
+Date:   Fri Feb 18 12:28:21 2022 +0900
+
+    Merge branch 'main' into yoon
+
+[33mcommit e1b9e904c0004b605eedcd9f607e99372106dc8e[m
+Author: 정윤수 <78465062+dbstn1325@users.noreply.github.com>
+Date:   Fri Feb 18 12:04:20 2022 +0900
+
+    Create UserInfo Backend
+
+[33mcommit ef9d8d2af07946abf8ce40fb39a192f2a5e94336[m
+Merge: d51c4d4 cb07a79
+Author: DonghyeonKang <86303312+DonghyeonKang@users.noreply.github.com>
+Date:   Fri Feb 18 10:13:31 2022 +0900
+
+    Merge pull request #11 from DonghyeonKang/dong
+    
+    Dong
+
+[33mcommit cb07a796582d590e8c75cd86ea5bd919afffb1c9[m
+Author: DongHyeon Kang <86303312+DonghyeonKang@users.noreply.github.com>
+Date:   Fri Feb 18 10:12:04 2022 +0900
+
+    Update Chart
+
+[33mcommit 4f22505fdda79b07a5d322a4520ee3651a7fd30e[m
+Author: DongHyeon Kang <86303312+DonghyeonKang@users.noreply.github.com>
+Date:   Mon Feb 14 22:33:03 2022 +0900
+
+    Update file structure
+
+[33mcommit 47e3a492932a1952b34ad63b8b56af9e9f11c9ef[m
+Author: DongHyeon Kang <86303312+DonghyeonKang@users.noreply.github.com>
+Date:   Mon Feb 14 20:07:15 2022 +0900
+
+    Update view chart
+
+[33mcommit 36f26d6b8ac53a37cb538b155092853c71bbc1b0[m
+Author: Donghyeon Kang <86303312+DonghyeonKang@users.noreply.github.com>
+Date:   Sun Feb 13 19:41:20 2022 +0900
+
+    Update Header.css
+
+[33mcommit dd533e13f7d13417707e75f3755d939ce8b2b836[m
+Author: Donghyeon Kang <86303312+DonghyeonKang@users.noreply.github.com>
+Date:   Fri Feb 11 20:30:45 2022 +0900
+
+    Update button event
+
+[33mcommit d51c4d4f47ccd64a01552b270b51b5bd2020b794[m
+Merge: e743a2b ae0353e
+Author: DonghyeonKang <86303312+DonghyeonKang@users.noreply.github.com>
+Date:   Fri Feb 11 16:02:30 2022 +0900
+
+    Merge pull request #10 from DonghyeonKang/dong
+    
+    Fix error after merge
+
+[33mcommit ae0353ec6eb0e6ef6c120a4d7ea83d27fe833696[m
+Author: Donghyeon Kang <86303312+DonghyeonKang@users.noreply.github.com>
+Date:   Fri Feb 11 16:01:51 2022 +0900
+
+    Fix error after merge
+
+[33mcommit e743a2b3d1a0316fc22399ec0c1a2ab831343613[m
+Merge: 5519ad3 bc718df
+Author: DonghyeonKang <86303312+DonghyeonKang@users.noreply.github.com>
+Date:   Fri Feb 11 15:32:57 2022 +0900
+
+    Merge pull request #9 from DonghyeonKang/dong
+    
+    Dong
+
+[33mcommit bc718df2e180507942134737fe77203e19bccab3[m
+Merge: 26d0d62 5519ad3
+Author: Donghyeon Kang <86303312+DonghyeonKang@users.noreply.github.com>
+Date:   Fri Feb 11 15:31:09 2022 +0900
+
+    Merge branch 'main' of https://github.com/DonghyeonKang/YourDay into dong
+
+[33mcommit 26d0d625080e526ef64ca99b2780886f8ced5f23[m
+Author: Donghyeon Kang <86303312+DonghyeonKang@users.noreply.github.com>
+Date:   Fri Feb 11 15:21:59 2022 +0900
+
+    Update chart component
+
+[33mcommit 5519ad364aeeddbaec39bdd109105065fd919952[m
+Merge: cdc6640 ac8cd3b
+Author: 정윤수 <78465062+dbstn1325@users.noreply.github.com>
+Date:   Fri Feb 11 11:12:02 2022 +0900
+
+    Merge pull request #8 from dbstn1325/main
+    
+    Create mypage Component
+
+[33mcommit ac8cd3ba4d9643340da23662511ab9417d48919e[m
+Merge: 858320c cdc6640
+Author: 정윤수 <78465062+dbstn1325@users.noreply.github.com>
+Date:   Fri Feb 11 10:53:46 2022 +0900
+
+    Merge branch 'DonghyeonKang:main' into main
+
+[33mcommit 858320c4b7d57ec0df81ca57125e19ed86395a46[m
+Author: 정윤수 <78465062+dbstn1325@users.noreply.github.com>
+Date:   Fri Feb 11 10:52:20 2022 +0900
+
+    Create mypage Component
+
+[33mcommit cdc6640b28f6651e44e7032bdf5e05e17808e6c8[m
+Merge: fa01ca8 1debf63
+Author: Soyul <86656269+Soyuly@users.noreply.github.com>
+Date:   Fri Feb 11 10:16:24 2022 +0900
+
+    Merge pull request #7 from DonghyeonKang/soyul2
+    
+    Soyul2
+
+[33mcommit 1debf63085c06ad352f22c38fa540702020ce5fb[m[33m ([m[1;31morigin/soyul2[m[33m)[m
+Author: Soyuly <thduf0623@likelion.org>
+Date:   Fri Feb 11 00:53:30 2022 +0900
+
+    html->tsx
+
+[33mcommit 58cdba49fcf444a1ec66243c5f539c5d8515802a[m
+Author: Soyul <soyul@Soyului-MacBookAir.local>
+Date:   Fri Feb 11 00:13:09 2022 +0900
+
+    1차 수정
+
+[33mcommit c30722bdf876d5e5ac13668b5a95aea2afd136a3[m
+Author: Donghyeon Kang <86303312+DonghyeonKang@users.noreply.github.com>
+Date:   Wed Feb 9 22:15:19 2022 +0900
+
+    Update Schema.sql
+
+[33mcommit 7d4d63ff63952a852e5dd0dda2695c5eee4c345b[m
+Author: Donghyeon Kang <86303312+DonghyeonKang@users.noreply.github.com>
+Date:   Tue Feb 8 16:34:24 2022 +0900
+
+    Add Chart
+
+[33mcommit 7c592503ff4113ba67d8f991e923524dd4842a7d[m
+Author: Donghyeon Kang <86303312+DonghyeonKang@users.noreply.github.com>
+Date:   Tue Feb 8 16:33:59 2022 +0900
+
+    Add Mydays
+
+[33mcommit 894c213c0dd698cc99c07000d94ea1a1264286e3[m
+Author: Donghyeon Kang <86303312+DonghyeonKang@users.noreply.github.com>
+Date:   Tue Feb 8 16:32:17 2022 +0900
+
+    Update index.html
+
+[33mcommit fa01ca8a03bea7aa519d2ae05b41416400eb00c6[m
+Merge: 3964686 01f84ef
+Author: DonghyeonKang <86303312+DonghyeonKang@users.noreply.github.com>
+Date:   Mon Feb 7 11:10:22 2022 +0900
+
+    Merge pull request #6 from DonghyeonKang/dong
+    
+    Add eslintignore
+
+[33mcommit 01f84ef4195a7b67702404ca687aff3d5d585409[m
+Author: Donghyeon Kang <86303312+DonghyeonKang@users.noreply.github.com>
+Date:   Mon Feb 7 11:10:02 2022 +0900
+
+    Add eslintignore
+    
+    Add eslintignore
+
+[33mcommit 3964686cf57ae05ec4fe27caf658f126a37883a0[m
+Merge: bf86c3e 7857493
+Author: DonghyeonKang <86303312+DonghyeonKang@users.noreply.github.com>
+Date:   Mon Feb 7 10:53:51 2022 +0900
+
+    Merge pull request #5 from DonghyeonKang/dong
+    
+    Dong
+
+[33mcommit 785749316c3912c6cb8f021183eaf61aae5586c9[m
+Author: Donghyeon Kang <86303312+DonghyeonKang@users.noreply.github.com>
+Date:   Mon Feb 7 10:52:07 2022 +0900
+
+    Update directory structure
+
+[33mcommit ba5fb59d129df1579a119bf0876b462c5f3ff799[m
+Author: Donghyeon Kang <86303312+DonghyeonKang@users.noreply.github.com>
+Date:   Mon Feb 7 10:13:33 2022 +0900
+
+    Update Public
+    
+    delete some refs
+
+[33mcommit bf86c3ef380ee719b0693178e153e0ed695428fc[m
+Merge: 1d3aaaf 9bf01ce
+Author: 정윤수 <78465062+dbstn1325@users.noreply.github.com>
+Date:   Sun Feb 6 13:55:53 2022 +0900
+
+    Merge pull request #4 from DonghyeonKang/yoon
+    
+    create myPages-front
+
+[33mcommit 9bf01ce754f8e93df510103964da06a62e354f4b[m
+Merge: e3caa75 1d3aaaf
+Author: 정윤수 <78465062+dbstn1325@users.noreply.github.com>
+Date:   Sun Feb 6 13:55:45 2022 +0900
+
+    Merge branch 'main' into yoon
+
+[33mcommit 1d3aaaf236fead5da4af747696a6dd3dbca05925[m
+Merge: b558d9c b732441
+Author: Yang Soyul <86656269+Soyuly@users.noreply.github.com>
+Date:   Sun Feb 6 13:51:50 2022 +0900
+
+    Merge pull request #3 from DonghyeonKang/soyul
+    
+    front
+
+[33mcommit b558d9cb9392351914c19544f9e7c511f0dcfce9[m
+Merge: 1bf2fb9 dc08fef
+Author: DonghyeonKang <86303312+DonghyeonKang@users.noreply.github.com>
+Date:   Sun Feb 6 13:50:47 2022 +0900
+
+    Merge pull request #2 from DonghyeonKang/dong
+    
+    Add static front myDays and intro
+
+[33mcommit dc08fef114df6103a72edc21854de762eefba70f[m
+Author: DonghyeonKang <donghyeon3372@gmail.com>
+Date:   Sun Feb 6 04:31:37 2022 +0000
+
+    Add static front myDays and intro
+
+[33mcommit e3caa759db42e05d929ec714dabc5c025ee1d2cb[m
+Author: Yoon soo <dbstn1325@naver.com>
+Date:   Sun Feb 6 13:22:08 2022 +0900
+
+    create myPages-front
+
+[33mcommit b732441f6a0a88dc2e9f36121d03ed21c97ba583[m[33m ([m[1;31morigin/soyul[m[33m)[m
+Author: Soyuly <thduf0623@likelion.org>
+Date:   Sun Feb 6 12:56:32 2022 +0900
+
+    front
+
+[33mcommit 1bf2fb9bb10122a0f664521bbb4a1bc7ec70b593[m
+Merge: 0645b70 2c82c56
+Author: DonghyeonKang <86303312+DonghyeonKang@users.noreply.github.com>
+Date:   Thu Feb 3 21:16:19 2022 +0900
+
+    Merge pull request #1 from DonghyeonKang/master
+    
+    Initial test
+
+[33mcommit 2c82c56a677d23fef86dfc86a147c7e6c86b62cd[m
+Author: Donghyeon Kang <donghyeon009@gmail.com>
+Date:   Thu Feb 3 12:15:09 2022 +0000
+
+    Initial test
+
+[33mcommit 0645b70558ec564547126b4cf79c697910ce7a9d[m
+Author: DonghyeonKang <86303312+DonghyeonKang@users.noreply.github.com>
+Date:   Fri Jan 21 15:20:41 2022 +0900
+
+    Update README.md
+
+[33mcommit 1355a48882ce0078b8d1f657f05329ee9cdaa9c9[m
+Author: DonghyeonKang <86303312+DonghyeonKang@users.noreply.github.com>
+Date:   Sun Jan 9 21:03:23 2022 +0900
+
+    Initial commit

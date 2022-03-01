@@ -17,6 +17,7 @@ function Profile() {
 function MyPage() {
   return (
     <>
+      <Header selected={3}/>
       <div className="mypage_container">
         <section className="mypage_main-section">
           <h1 className="mypage_main-header">소열님의 정보,</h1>
