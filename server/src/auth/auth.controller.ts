@@ -13,12 +13,13 @@ import {
 } from '@nestjs/common';
 import { url } from 'inspector';
 import fetch from 'node-fetch';
-import { KakaoService } from './kakao.service';
+
 
 @Controller('auth')
 export class AuthController {
-  constructor(private readonly kakaoService: KakaoService) {}
+ 
 
+<<<<<<< HEAD
   @Get("kakaoLogin")
   @Header('Content-Type', 'text/html')
   getKakaoLoginPage():string {
@@ -150,6 +151,8 @@ export class AuthController {
           console.log(err);
           return res.send('logout error');
         })
+=======
+>>>>>>> b46d4a9ac3e5d03a8dfeb08cee7c0b501ebb85f5
     }
 
     
@@ -157,4 +160,4 @@ export class AuthController {
 
   
 
-}
+
