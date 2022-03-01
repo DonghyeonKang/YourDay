@@ -6,21 +6,17 @@ import Login from "./routes/Login";
 import Schedule from "./routes/Schedule";
 import Time from "./routes/Time";
 import "./App.css";
-import FriendList from "./routes/FriendList";
-import Edit from "./routes/Edit";
 import Header from "./components/Header";
 
 function App() {
   const userid = 1212;
   return (
-<Router>
+    <Router>
       <Header />
       <Routes>
         <Route path="/Time" element={<Main />} />
         <Route path="/mypage" element={<MyPage />} />
-        <Route path="/mydays" element={<MyDays id={userid}/>} />
-        <Route path="/mypage/friendList" element={<FriendList />} />
-        <Route path="/mypage/friendList/edit" element={<Edit />} />
+        <Route path="/mydays" element={<MyDays id={userid} />} />
       </Routes>
     </Router>
   );
