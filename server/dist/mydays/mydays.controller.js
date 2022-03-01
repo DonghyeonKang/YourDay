@@ -20,6 +20,7 @@ let ChartController = class ChartController {
         this.chartService = chartService;
     }
     getChartData(id) {
+        console.log("connected");
         return this.chartService.getChartData(id);
     }
 };

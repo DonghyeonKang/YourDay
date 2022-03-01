@@ -43,11 +43,12 @@ function MyDays() {
 
   // 데이터 받아오기
   useEffect(() => {
-    fetch(`/mydays/123123413412414`) //TODO id로 바꿔줘야함
+    fetch(`http://localhost:3001/mydays/123123413412414`) //TODO id로 바꿔줘야함
       .then((res) => res.json())
       .then(
         (result) => {
           const tmp = [];
+          console.log(result);
           
           for (let i = 0; i < 3; i++) {
             tmp.push(editData(result, i));
