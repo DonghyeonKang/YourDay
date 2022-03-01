@@ -12,7 +12,14 @@ export class UsersService {
         private userRepository: UserRepository,
     ){}
 
+    getUserName(): Promise<any> {
+        return this.userRepository.getUserName();
+    }
+
     
+    getUserInfo(): Promise<any> {
+        return this.userRepository.getUserInfo();
+    }
 
     //친구목록 다 찾기
     getAllUser(): Promise<any> {
@@ -21,9 +28,16 @@ export class UsersService {
 
 
     ////윤수 찾기=> user.exist(id) -> const user = user.find(id, ) -> return user.name
-    getUserById(searchUserDto: SearchUserDto): Promise <String> {
-        return this.userRepository.getUserById(searchUserDto);
+
+    
+    getUserById(name: string): Promise <String> {
+        return this.userRepository.getUserById(name);
     }
+
+    
+    // getUserById(searchUserDto: SearchUserDto): Promise <String> {
+    //     return this.userRepository.getUserById(searchUserDto);
+    // }
 
     createUser(createUserDto: CreateUserDto) : Promise<User> {
         return this.userRepository.createUser(createUserDto);

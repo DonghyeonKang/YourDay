@@ -95,8 +95,8 @@ export class AuthController {
     this.kakaoService
       .showUserInfo(_url, _headers)
       .then((e)=> {
-        console.log(e);
-        // console.log("전송");
+        // console.log(e);
+        
       })
       .catch((err)=> {
         console.log(err);
