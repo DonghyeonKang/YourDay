@@ -12,7 +12,7 @@ export class UsersService {
         private userRepository: UserRepository,
     ){}
 
-<<<<<<< HEAD
+
     getUserName(): Promise<any> {
         return this.userRepository.getUserName();
     }
@@ -20,8 +20,9 @@ export class UsersService {
     
     getUserInfo(): Promise<any> {
         return this.userRepository.getUserInfo();
-=======
-    googleLogin(req){
+    }
+
+    googleLogin(req:any){
         if(!req.user){
             return "No User from google"
         }
@@ -30,7 +31,6 @@ export class UsersService {
             user: req.user
         }
         
->>>>>>> b46d4a9ac3e5d03a8dfeb08cee7c0b501ebb85f5
     }
 
     //친구목록 다 찾기
