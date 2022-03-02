@@ -18,6 +18,17 @@ import { AuthGuard } from '@nestjs/passport';
 export class UsersController {
     constructor(private usersService: UsersService) {}
     
+    @Get('/google')
+    @UseGuards(AuthGuard('google'))
+    async googleAuth(@Req() req) {
+    }
+
+    @Get('auth/google/callback')
+    @UseGuards(AuthGuard('google'))
+    googleAuthredirect(@Req() req){
+        return this.usersService.googleLogin(req)
+    }
+
 
     @Get('/')
     getUserName(): Promise<any> {
