@@ -1,4 +1,3 @@
-import { type } from 'os';
 import { Entity, BaseEntity, PrimaryColumn, Column, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
 import { User } from '../users/user.entity';
 

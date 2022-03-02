@@ -9,7 +9,7 @@ export class GoogleStrategy extends PassportStrategy (Strategy, 'google'){
         super({
             clientID : '854410560304-c0nh8b9ina8jrji9gmsn6pjlnpu0pvqj.apps.googleusercontent.com',
             clientSecret : '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',
-            callbackURL : 'http://localhost:3000/mypage/auth/google/callback',
+            callbackURL : 'http://localhost:3001/mypage/auth/google/callback',
             scope : ['email','profile','https://www.googleapis.com/auth/calendar.readonly'],
         });
     }
@@ -20,8 +20,8 @@ export class GoogleStrategy extends PassportStrategy (Strategy, 'google'){
             email: emails[0].value,
             firstname : name.givenName,
             lastname : name.familyName,
-            picture : photos[0].value,
-            accessToken
+            // picture : photos[0].value,
+            // accessToken
         }
         done(null, user);
     }

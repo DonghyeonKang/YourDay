@@ -77,16 +77,17 @@ export class UserRepository extends Repository<User> {
 
 
     async createUser(createUserDto: CreateUserDto) : Promise<User> {
-        const { name, email } = createUserDto;
-
+        const { firstname, lastname, email } = createUserDto;
         
+        const userName = firstname + lastname;
+        console.log(userName);
         const userExist = await this.checkExistByEmail(email);
         
         if(!userExist) { //존재하지 않는 유저라면
             console.log("존재하지 않는 유저네? 만들어줌")
             // throw new UnprocessableEntityException('해당 이메일은 가입된 계정입니다.')
             const user = this.create({
-                name,
+                name: userName,
                 email,
                 ShareStatus: UserStatus.ON,
             })

@@ -17,7 +17,7 @@ import { AuthGuard } from '@nestjs/passport';
 @Controller('mypage')
 export class UsersController {
     constructor(private usersService: UsersService) {}
-    
+
     @Get('/google')
     @UseGuards(AuthGuard('google'))
     async googleAuth(@Req() req) {
@@ -26,7 +26,9 @@ export class UsersController {
     @Get('auth/google/callback')
     @UseGuards(AuthGuard('google'))
     googleAuthredirect(@Req() req){
-        return this.usersService.googleLogin(req)
+        const user = req.user;
+        console.log(req.user);
+        return this.usersService.createUser(user);
     }
 
 
@@ -71,7 +73,8 @@ export class UsersController {
         // return console.log(res.req.body);
         
         const {
-            name: n,
+            firstname: fn,
+            lastname: ln,
             email: e,
         } = createUserDto;
 
