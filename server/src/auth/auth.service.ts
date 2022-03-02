@@ -8,7 +8,7 @@ import { HttpService } from '@nestjs/axios';
 @Injectable()
 export class AuthService {
 
-  constructor(private httpService: HttpService) {}
+  // constructor(private httpService: HttpService) {}
 
 
   

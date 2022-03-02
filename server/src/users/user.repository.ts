@@ -22,7 +22,6 @@ export class UserRepository extends Repository<User> {
             result.map((user)=> {
                 console.log(user);
                 name = user.name;
-                
             });
         });
         return name ;
@@ -35,7 +34,7 @@ export class UserRepository extends Repository<User> {
     
         await this.find({name: sessionName})
         .then((user)=> {
-            return user
+            return user;
             })
         .catch((err)=>{
             return err.response;
