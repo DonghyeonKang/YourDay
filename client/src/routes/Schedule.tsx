@@ -1,7 +1,7 @@
 import React from "react";
 import "./css/schedule.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Header from "../components/Header";
+import Header from "../components/Header/Header";
 import styled from "styled-components";
 import img from "../assets/backgound.png";
 
