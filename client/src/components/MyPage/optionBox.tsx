@@ -11,6 +11,8 @@ import axios from "axios";
 export function OptionBox(prop: PeriodNavProps) {
   const [searchName, setSearchName] = useState("");
   const [friend, setFriend] = useState("");
+  const [ friendExist, setFriendExist ] = useState(false);
+
   const [requestTo, setRequestTo] = useState("");
 
   const [request, setRequest] = useState("");
@@ -30,10 +32,14 @@ export function OptionBox(prop: PeriodNavProps) {
       .get(`http://localhost:3001/mypage/friendList/edit/${searchName}`)
       .then((result) => {
         setFriend(result.data);
+        setFriendExist(true);
         setRequestTo(result.data);
       })
       .catch((err) => {
-        if (err.response.status === 404) setFriend("");
+        if (err.response.status === 404) {
+          setFriendExist(false);
+          setFriend("존재하지 않는 유저");
+        }
       });
   };
 
@@ -73,9 +79,9 @@ export function OptionBox(prop: PeriodNavProps) {
             />
           </div>
           <div className="optionBox_inner-searchResult">
-            {friend === "" ? (
+            {friendExist !== true ? (
               <div className="optionBox_inner-fail">
-                <span> 존재하지 않는 유저 </span>
+                <span> {friend} </span>
               </div>
             ) : (
               <div className="optionBox_inner-success">
