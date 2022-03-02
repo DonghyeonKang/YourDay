@@ -21,7 +21,7 @@ export class UsersService {
         return this.userRepository.getUserInfo();
     }
 
-    googleLogin(req){
+    googleLogin(req:any){
         if(!req.user){
             return "No User from google"
         }
@@ -29,6 +29,7 @@ export class UsersService {
             message : 'User Info from Google',
             user: req.user
         }
+        
     }
 
     //친구목록 다 찾기
