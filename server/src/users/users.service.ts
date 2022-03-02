@@ -12,7 +12,6 @@ export class UsersService {
         private userRepository: UserRepository,
     ){}
 
-
     getUserName(): Promise<any> {
         return this.userRepository.getUserName();
     }
