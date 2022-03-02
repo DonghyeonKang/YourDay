@@ -12,7 +12,7 @@ const StyledDiv = styled.div`
     height: auto;
     margin: 0;
     background-image: url("${img}");
-    background-size: cover; 
+    background-size: cover;
   }
   
   &:before {
