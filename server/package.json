@@ -28,11 +28,8 @@
     "@nestjs/passport": "^8.2.1",
     "@nestjs/platform-express": "^8.0.0",
     "@nestjs/typeorm": "^8.0.3",
-<<<<<<< HEAD
     "axios": "^0.26.0",
-=======
     "dotenv": "^16.0.0",
->>>>>>> b46d4a9ac3e5d03a8dfeb08cee7c0b501ebb85f5
     "mysql2": "^2.3.3",
     "node-fetch": "^2.6.7",
     "passport": "^0.5.2",
