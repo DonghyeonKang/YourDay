@@ -1,6 +1,6 @@
 import React from "react";
 import "../css/login.css";
-import Header from "../components/Header";
+import Header from "../components/Header/Header";
 
 export default function Login() {
   return (

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./css/MyDays.css";
 import Chart from "../components/Chart/Chart";
-import Header from "../components/Header";
+import Header from "../components/Header/Header";
 import styled from "styled-components";
 import img from "../assets/backgound.png";
 
