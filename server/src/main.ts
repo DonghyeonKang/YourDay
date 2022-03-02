@@ -1,4 +1,5 @@
 import { NestFactory } from '@nestjs/core';
+import { appendFile } from 'fs';
 import { AppModule } from './app.module'; // 가장 큰 모듈
 
 

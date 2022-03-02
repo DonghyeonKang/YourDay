@@ -4,14 +4,6 @@
   font-family: "Nanum Myeongjo", serif;
 }
 
-nav {
-  margin-top: 1%;
-  margin-bottom: 3%;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-
 .item {
   font-family: "Nanum Myeongjo", serif;
   color: white;
@@ -22,24 +14,6 @@ nav {
   color: white;
   font-size: 2.5rem;
   margin-left: 0.7em;
-}
-.logo {
-  width: 7rem;
-  height: 7rem;
-  border: 4px solid white;
-  font-family: "Varela Round", sans-serif;
-  color: #f2f2f2;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-body {
-  background-image: url("../img/bg.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-  margin: 0;
 }
 
 .container {
@@ -60,6 +34,7 @@ body {
   font-size: 1.2rem;
   color: #c3e3cb;
   text-align: center;
+  word-break: keep-all;
 }
 
 .today {

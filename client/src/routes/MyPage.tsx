@@ -27,6 +27,7 @@ export function MyPage() {
 
   return (
     <>
+      <Header selected={3}/>
       <div className="mypage_container">
         <section className="mypage_main-section">
           <h1 className="mypage_main-header">{name}님의 정보,</h1>

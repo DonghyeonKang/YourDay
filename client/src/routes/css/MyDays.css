@@ -3,29 +3,8 @@ html {
   background-color: #000;
 }
 
-.body {
-  position: relative;
-  width: 100%;
-  min-height: 100%;
-  height: auto;
-  margin: 0;
-  background-image: url("/src/assets/backgound.png") !important;
-  background-size: cover;
-}
-
-.body::before {
-  content: "";
-  background-position: 50% 50%;
-  opacity: 0.9;
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  z-index: -100;
-}
-
 .mydays_container {
     margin: 0 4em 0 4em;
-    padding-bottom: 8em;
     color: white;
     font-family: "Nanum Myeongjo", serif;
 }

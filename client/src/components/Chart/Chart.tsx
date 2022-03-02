@@ -9,13 +9,11 @@ interface propTypes {
   chartMode: number;
   setChartMode: (num: number) => void;
   chartName: string;
-  data: number[];
+  data: number[][];
 }
 
 
-const Chart = (props: propTypes) => {
-  console.log(props.chartType);
-
+const Chart = (props: propTypes) => {  
   const [chartMenuName, setChartMenuName] = useState([
     "chart_menu_saveTime selected",
     "chart_menu_wasteTime",
@@ -55,10 +53,6 @@ const Chart = (props: propTypes) => {
               </div>
             </aside>
           </div>
-          <div className="content_comment">
-            <h3>Comment</h3>
-            <p>오늘 완수한 시간은 총 12시간입니다!</p>
-          </div>
         </div>
       </>
     );
@@ -69,10 +63,6 @@ const Chart = (props: propTypes) => {
           <h2 className="content_title">{props.chartName}</h2>
           <div className="content_inner">
             <PieChart data={props.data}/>
-          </div>
-          <div className="content_comment">
-            <h3>Comment</h3>
-            <p>오늘 완수한 시간은 총 12시간입니다!</p>
           </div>
         </div>
       </>
