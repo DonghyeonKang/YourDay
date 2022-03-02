@@ -1,45 +1,41 @@
-import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-
+import axios from "axios";
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 export function FriendInfo() {
-    const [users, setUsers] = useState([
-      {
-        id: 0,
-        name: "소열",
-      },
-      {
-        id: 1,
-        name: "윤수",
-      },
-    ]);
-  
-    const addUser = () => {
-      setUsers([
-        ...users,
-        {
-          id: 2,
-          name: "동현",
-        },
-      ]);
-    };
-  
-    // useEffect(()=>{
-    //   addUser();
-    // },[]);
-  
-  
-    return (
-      <div className="info">
-        <ul className="info_inner">
-          {users.map((user) => 
-            <span>
-              <Link to={`/${user.id}`}> {user.name} </Link> 
-            </span>
-          )}
-        </ul>
-      </div>
-    );
+  const [users, setUsers] = useState([]);
+  const [userId, setUserId] = useState(0);
+
+  async function fetchData() {
+    try {
+      const friendList = await axios.get(
+        "http://localhost:3001/mypage/friendList"
+      );
+
+      setUsers(friendList.data);
+    } catch (err) {
+      console.log(err);
+    }
   }
-  
-  
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  //{`/${user.id}`}
+  return (
+    <div className="mypage_friendInfo">
+      {users.map((user) => (
+        <span>
+          <Link to="#" style={{ textDecoration: "none", color: "white" }}>
+            {" "}
+            {user}{" "}
+          </Link>
+        </span>
+      ))}
+      {/* 친구 요청목록  */}
+      {/* <span> 소열 </span>
+          <span> 윤수 </span> */}
+    </div>
+  );
+}

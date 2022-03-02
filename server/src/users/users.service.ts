@@ -12,7 +12,26 @@ export class UsersService {
         private userRepository: UserRepository,
     ){}
 
+<<<<<<< HEAD
+    getUserName(): Promise<any> {
+        return this.userRepository.getUserName();
+    }
+
     
+    getUserInfo(): Promise<any> {
+        return this.userRepository.getUserInfo();
+=======
+    googleLogin(req){
+        if(!req.user){
+            return "No User from google"
+        }
+        return { 
+            message : 'User Info from Google',
+            user: req.user
+        }
+        
+>>>>>>> b46d4a9ac3e5d03a8dfeb08cee7c0b501ebb85f5
+    }
 
     //친구목록 다 찾기
     getAllUser(): Promise<any> {
@@ -21,9 +40,16 @@ export class UsersService {
 
 
     ////윤수 찾기=> user.exist(id) -> const user = user.find(id, ) -> return user.name
-    getUserById(searchUserDto: SearchUserDto): Promise <String> {
-        return this.userRepository.getUserById(searchUserDto);
+
+    
+    getUserById(name: string): Promise <String> {
+        return this.userRepository.getUserById(name);
     }
+
+    
+    // getUserById(searchUserDto: SearchUserDto): Promise <String> {
+    //     return this.userRepository.getUserById(searchUserDto);
+    // }
 
     createUser(createUserDto: CreateUserDto) : Promise<User> {
         return this.userRepository.createUser(createUserDto);
