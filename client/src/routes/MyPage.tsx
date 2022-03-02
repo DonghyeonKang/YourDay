@@ -2,12 +2,34 @@
 import "./css/MyPage.css";
 
 import { Info } from '../components/MyPage/Info';
-import Header from "../components/Header";
+import Header from "../components/Header/Header";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import styled from "styled-components";
+import img from "../assets/backgound.png";
 
-
+const StyledDiv = styled.div`
+  & {
+    position: relative;
+    width: 100%;
+    min-height: 100%;
+    height: auto;
+    margin: 0;
+    background-image: url("${img}");
+    background-size: cover; 
+  }
+  
+  &:before {
+    content: "";
+    background-position: 50% 50%;
+    z-index: -100;
+    opacity: 0.9;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+  }
+`;
 
 
 export function MyPage() {
@@ -26,7 +48,7 @@ export function MyPage() {
   }, []);
 
   return (
-    <>
+    <StyledDiv>
       <Header selected={3}/>
       <div className="mypage_container">
         <section className="mypage_main-section">
@@ -64,7 +86,7 @@ export function MyPage() {
           </div>
         </section>
       </div>
-    </>
+    </StyledDiv>
   );
 }
 
