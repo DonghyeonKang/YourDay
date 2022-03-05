@@ -2,7 +2,7 @@ import "../../routes/css/MyPage.css";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { faCheck, faSearch } from "@fortawesome/free-solid-svg-icons";
 
 import { PeriodNavProps } from "./PeriodNav";
 import { useState } from "react";
@@ -11,21 +11,19 @@ import axios from "axios";
 export function OptionBox(prop: PeriodNavProps) {
   const [searchName, setSearchName] = useState("");
   const [friend, setFriend] = useState("");
-  const [ friendExist, setFriendExist ] = useState(false);
-
+  const [friendExist, setFriendExist] = useState(false);
   const [requestTo, setRequestTo] = useState("");
-
   const [request, setRequest] = useState("");
+
+  const faPropIcon = faSearch as IconProp;
+  const faCheckIcon = faCheck as IconProp;
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value: name } = e.target;
     setSearchName(name);
   };
 
-  const faPropIcon = faSearch as IconProp;
-
   const handleSearch = async () => {
-    console.log(searchName);
     console.log("search : " + searchName);
 
     await axios
@@ -43,25 +41,28 @@ export function OptionBox(prop: PeriodNavProps) {
       });
   };
 
+
+
   const handleFriendRequest = async () => {
     setRequest("send");
-
-    //친구 요청 부분
-    // await axios.get(`http://localhost:3001/mypage/`)
-    // .then()
-    // await axios.post('http://localhost:3001/friends', {name: requestTo} ,{})
-    // .then((result) => {
-
-    //   console.log(`결과: ${result.data}`);
-    // })
+    console.log("send");
+    //친구 요청
+    await axios.post('http://localhost:3001/friends', {name: requestTo} ,{})
+    .then((e) => {
+      console.log(e);
+    })
   };
+
+
+
 
   const handleSubmit = (event: any) => {
     event.preventDefault();
   };
+
   return (
     <div className="optionBox">
-      <h2 className="optionBox_title"> {prop.title} </h2>
+      <h3 className="optionBox_title"> {prop.title} </h3>
       {prop.code === "edit" ? (
         <form onSubmit={handleSubmit}>
           <div className="optionBox_inner">
@@ -86,10 +87,12 @@ export function OptionBox(prop: PeriodNavProps) {
             ) : (
               <div className="optionBox_inner-success">
                 <span> {friend} </span>
-                <button type="submit" onClick={handleFriendRequest}>
-                  O
-                </button>
-                <button>X</button>
+                <FontAwesomeIcon
+                  onClick={handleFriendRequest}
+                  type="submit"
+                  icon={faCheckIcon}
+                  className="friendRequest"
+                />
               </div>
             )}
           </div>

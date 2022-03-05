@@ -27,18 +27,24 @@ export class UserRepository extends Repository<User> {
         return name ;
     }
 
-    async getUserInfo() : Promise<any> {
+    async getUserInfo(name: string) : Promise<User[]> {
         //실제론 세션인 id로 가져옴 (req.session.id)에서 가져옴
         let id: BigInt = BigInt(0);
-        const sessionName = "정윤수";
-    
-        await this.find({name: sessionName})
-        .then((user)=> {
-            return user;
-            })
-        .catch((err)=>{
-            return err.response;
-        });
+        
+        //세션 수정
+        // const sessionName = "정윤수";
+
+
+        const user = await this.find({name: name});
+        return user;
+        // await this.find({name: name})
+        // .then((user)=> {
+        //     // console.log(user);  
+        //     return user;
+        //     })
+        // .catch((err)=>{
+        //     return err.response;
+        // });
 
     }
         

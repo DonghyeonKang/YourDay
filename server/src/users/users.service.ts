@@ -1,9 +1,10 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { Body, Injectable, NotFoundException, Req } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { User } from './user.entity';
 import { UserRepository } from './user.repository';
 import { CreateUserDto, SearchUserDto } from './dto/create-user.dto';
 import { UserStatus } from './user-Status.enum';
+
 
 @Injectable()
 export class UsersService {
@@ -16,17 +17,18 @@ export class UsersService {
         return this.userRepository.getUserName();
     }
 
-    
-    getUserInfo(): Promise<any> {
-        return this.userRepository.getUserInfo();
+    //Promise<any>
+    async getUserInfo(name: string): Promise<any>{
+        // console.log(`service: ${name}`);
+        return this.userRepository.getUserInfo(name);
     }
-
+    
     // googleLogin(req:any){
     //     console.log(req.user);
     //     if(!req.user){
     //         return "No User from google"
     //     }
-    //     return { 
+    //     return {
     //         message : 'User Info from Google',
     //         user: req.user
     //     }
@@ -45,6 +47,7 @@ export class UsersService {
     getUserById(name: string): Promise <String> {
         return this.userRepository.getUserById(name);
     }
+
 
     
     // getUserById(searchUserDto: SearchUserDto): Promise <String> {

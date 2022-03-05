@@ -17,7 +17,7 @@ export class User extends BaseEntity {
     @Column()
     ShareStatus: UserStatus;
     
-    @OneToMany(type => Friend, friend => friend.user, { eager: true})
+    @OneToMany(type => Friend, friend => friend.user, { eager: true })
     friends: Friend[];
 
 }

@@ -1,5 +1,5 @@
 
-import { ConsoleLogger, Header, Request, Res, Response } from '@nestjs/common';
+import { ConsoleLogger, Header, Request, Res, Response, Session } from '@nestjs/common';
 
 import { Body, Controller, Delete, Get, Param, ParseIntPipe, Post, UseGuards,Req } from '@nestjs/common';
 
@@ -38,8 +38,9 @@ export class UsersController {
     }
 
     @Get('/info')
-    getUserInfo(): Promise<any> {
-        return this.usersService.getUserInfo();
+    getUserInfo(@Body() name): any {
+        // console.log(name.name);
+        return this.usersService.getUserInfo(name.name);
     }
 
     @Get('/friendList')
