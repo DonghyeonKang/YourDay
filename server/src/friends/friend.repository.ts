@@ -1,5 +1,5 @@
 import { EntityRepository, Repository } from 'typeorm';
-import { Friend } from './friend.entity';
+import { Friend } from './entities/friend.entity';
 import { CreateFriendDto } from './dto/create-friend.dto';
 import { Body } from '@nestjs/common';
 import { User } from '../users/user.entity';
@@ -23,4 +23,6 @@ export class FriendRepository extends Repository<Friend> {
         await this.save(friend);
         return friend;
     } 
+
+    
 }

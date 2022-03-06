@@ -47,7 +47,7 @@ export function OptionBox(prop: PeriodNavProps) {
     setRequest("send");
     console.log("send");
     //친구 요청
-    await axios.post('http://localhost:3001/friends', {name: requestTo} ,{})
+    await axios.post('http://localhost:3001/friends/send', {name: requestTo} ,{})
     .then((e) => {
       console.log(e);
     })

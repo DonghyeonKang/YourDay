@@ -1,15 +1,15 @@
 import { Entity, BaseEntity, PrimaryColumn, Column, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
-import { User } from '../users/user.entity';
+import { User } from '../../users/user.entity';
 
 
 @Entity()
-export class Friend extends BaseEntity {
+export class ReceivedReq extends BaseEntity {
     @PrimaryGeneratedColumn()
-    friend_id: BigInt;
+    received_req__id: BigInt;
     
     @Column()
     name: string;
 
-    @ManyToOne(type => User, user => user.friends, { eager: false })
+    @ManyToOne(type => User, user => user.recived_reqs, { eager: false })
     user: User;
 }
