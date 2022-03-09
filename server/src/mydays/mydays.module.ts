@@ -6,9 +6,10 @@ import { ChartService } from './mydays.service';
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([ChartRepository])
+    TypeOrmModule.forFeature([ChartRepository])  // cron 에서 schedule service 를 가져다 쓰기 위함
   ],
   controllers: [ChartController],
-  providers: [ChartService]
+  providers: [ChartService],
+  exports: [ChartService]
 })
 export class ChartModule {}

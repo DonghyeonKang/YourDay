@@ -5,9 +5,13 @@ import { AuthModule } from './auth/auth.module';
 import { ChartModule } from './mydays/mydays.module';
 import { FriendsModule } from './friends/friends.module';
 import { join } from 'path/posix';
+import { scheduleModule } from './schedule/schedule.module';
+import { ScheduleModule } from '@nestjs/schedule';
+import { CronModule } from './cron/cron.module';
 
 @Module({
   imports: [
+    ScheduleModule.forRoot(),
     TypeOrmModule.forRoot({
       type: 'mysql',
       host: 'localhost',
@@ -22,6 +26,8 @@ import { join } from 'path/posix';
     AuthModule,
     ChartModule,
     FriendsModule,
-  ],
+    scheduleModule,
+    CronModule
+  ]
 })
 export class AppModule {}
