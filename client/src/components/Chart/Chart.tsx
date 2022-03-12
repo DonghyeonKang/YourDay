@@ -10,6 +10,7 @@ interface propTypes {
   setChartMode: (num: number) => void;
   chartName: string;
   data: number[][];
+  dayData: any[];
 }
 
 
@@ -19,6 +20,7 @@ const Chart = (props: propTypes) => {
     "chart_menu_wasteTime",
   ]);
 
+  // mode 가 1이면  barchart 0이면 piechart
   if (props.chartMode != 0) {
     return (
       <>
@@ -62,7 +64,7 @@ const Chart = (props: propTypes) => {
         <div className="main_section_inner_content">
           <h2 className="content_title">{props.chartName}</h2>
           <div className="content_inner">
-            <PieChart data={props.data}/>
+            <PieChart data={props.dayData}/>
           </div>
         </div>
       </>

@@ -6,7 +6,10 @@ import { NotAcceptableException, NotFoundException, UnprocessableEntityException
 
 @EntityRepository(User)
 export class UserRepository extends Repository<User> {
-
+    // 모든 사용자의 데이터를 가져옴
+    async getAllUsersData() : Promise <any> {  // SELECT "user_id" FROM "user"
+        return this.find();
+    }
 
     async getUserName() : Promise<any> {
         //실제론 세션인 id로 가져옴 (req.session.id)에서 가져옴
@@ -41,9 +44,6 @@ export class UserRepository extends Repository<User> {
         });
 
     }
-        
-        
-    
 
     async getAllUser() : Promise<any> {
         // return this.find();
