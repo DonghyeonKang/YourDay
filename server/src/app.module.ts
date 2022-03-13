@@ -9,14 +9,14 @@ import { join } from 'path/posix';
 @Module({
   imports: [
     TypeOrmModule.forRoot({
-      type: 'mysql',
-      host: 'localhost',
+      type: "mysql",
+      host: "localhost",
       port: 3306,
-      username: 'root',
-      password: 'gold3819',
-      database: 'user_db',
-      entities: [join(__dirname, '**', '*.entity.{ts,js}')],
-      synchronize: true,
+      username: "irosh",
+      password: "syoro223",
+      database: "yourday",
+      entities: [__dirname + '/../**/*.entity.js'],
+      synchronize: true
     }),
     UsersModule,
     AuthModule,
