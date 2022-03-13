@@ -39,9 +39,9 @@ export class UsersController {
     }
 
     @Get('/info')
-    getUserInfo(@Body() name): any {
+    getUserInfo(@Body('name') email: string): any {
         // console.log(name.name);
-        return this.usersService.getUserInfo(name.name);
+        return this.usersService.getUserInfo(email);
     }
 
 

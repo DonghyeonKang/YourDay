@@ -8,6 +8,14 @@ import { User } from '../users/user.entity';
 @EntityRepository(Friend)
 export class FriendRepository extends Repository<Friend> {
     
+    async getFriendByUser(userId: number) {
+        const result = await this
+            .createQueryBuilder('friend')
+            .innerJoin('friend.user', 'user')
+            .where('user.user_Id = :userId', { userId })
+            .getMany();
+        return result;
+    }
 
     async createFriend(username: string,
         createFriendDto: User,
@@ -17,20 +25,13 @@ export class FriendRepository extends Repository<Friend> {
         // console.log(`레파지토리: ${JSON.stringify(createFriendDto.name)}`);
 
         const friend = this.create({
-            name,
+            name:"윤수",
             user: createFriendDto,
         });
         await this.save(friend);
         return friend;
     }
 
-    async getFriend(username: string): Promise<any> {
-        // const name = "정윤수";
-        
-        // const friends = await this.find({name: name});
-        // console.log(`찾은 ${friends}`);
-        // return friends;
-    }
 
 
 }

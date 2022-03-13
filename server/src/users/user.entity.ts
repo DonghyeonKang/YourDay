@@ -26,11 +26,11 @@ export class User extends BaseEntity {
   @Column()
   ShareStatus: UserStatus;
 
-  @OneToMany(type => ReceivedReq, recived_req => recived_req.user, { eager: true })
-    recived_reqs: ReceivedReq[];
+  @OneToMany(() => ReceivedReq, (received_req) => received_req.user, { eager: true })
+    received_reqs?: ReceivedReq[];
 
-  @OneToMany(type => Friend, friend => friend.user, { eager: true })
-    friends: Friend[];
+  @OneToMany(() => Friend, (friend) => friend.user, { eager: true })
+    friends?: Friend[];
 
   @OneToMany(
     (type) => Chart, (chart) => chart.user, { eager: true }  // 다른 데이터 조회시 연관된 데이터 모두 가져오기 때문에 낭비일 수 있다.

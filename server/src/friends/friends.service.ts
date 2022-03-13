@@ -10,16 +10,15 @@ export class FriendsService {
         @InjectRepository(FriendRepository)
         private friendRepository: FriendRepository,
     ){}
-
+    
+    getFriendByUser(userId: number) {
+        return this.friendRepository.getFriendByUser(userId);
+    }
 
     createFriend(username: string,
         createFriendDto: User,
     ): Promise<Friend> {
         return this.friendRepository.createFriend(username, createFriendDto);
-    }
-
-    getFriend(username: string) {
-        return this.friendRepository.getFriend("정윤수");
     }
 
     

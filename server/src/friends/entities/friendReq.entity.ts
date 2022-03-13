@@ -13,6 +13,8 @@ export class ReceivedReq extends BaseEntity {
     @Column()
     email: string;
 
-    @ManyToOne(type => User, user => user.recived_reqs, { eager: false })
+    @ManyToOne(() => User, (user) => user.received_reqs, {
+        eager: false 
+    })
     user: User;
 }

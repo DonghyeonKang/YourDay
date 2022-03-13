@@ -15,10 +15,11 @@ export class FriendsController {
     private friendReqService: FriendReqService,
   ) {}
 
-  //@Body() createFriendDto: CreateFriendDto,
+  @Get('/getAllFriends/:id')
+  getFriendByUser(@Param('id') id: number): any {
+    return this.friendService.getFriendByUser(id);
+  }
 
-  //createFriend(@Body() createFriendDto: CreateFriendDto,
-  // @Body() user: User): any {
 
     //친구 등록
   @Post('/')
@@ -36,19 +37,13 @@ export class FriendsController {
       });
   }
 
-  @Get('/get')
-  getFriend(@Body() name): any {
-    return this.friendService.getFriend("정윤수");
-  }
-
   
 
 
   //친구 요청 보내는 곳
   @Post('/req/send')
   sendFriendRequest(@Body('email') email:string): any {
-    
-    const exist = this.usersService.checkUserFriendReq(email);
+    const exist = this.friendReqService.checkUserFriendReq(email);
 
     return exist.then((result) => {
       if(result !== false){
@@ -59,7 +54,7 @@ export class FriendsController {
       .then((user) => {
         user.forEach((info:any) => {
           console.log(info);
-          return this.friendReqService.createFriendReq('정윤수', info);
+          return this.friendReqService.createFriendReq(info);
         });
       })
       .catch((err) => {
@@ -67,9 +62,9 @@ export class FriendsController {
         return err;
       });
     });
-
-    
   }
+
+
 
   
   

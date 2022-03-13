@@ -11,15 +11,16 @@ export class FriendReqService {
         @InjectRepository(ReceivedReqRepository)
         private receivedReqRepository: ReceivedReqRepository,
     ){}
+    
 
-
-    createFriendReq(username: string,
-        createFriendReqDto: User,
+    createFriendReq(createFriendReqDto: User,
     ): Promise<ReceivedReq> {
-        return this.receivedReqRepository.createReceivedReq(username, createFriendReqDto);
+        return this.receivedReqRepository.createReceivedReq(createFriendReqDto);
     }
 
-
+    checkUserFriendReq(email: string) {
+        return this.receivedReqRepository.checkUserFriendReq(email);
+    }
 
     deleteFriendRequest(id: any): Promise<any> {
         return this.receivedReqRepository.deleteFriendRequest(id);

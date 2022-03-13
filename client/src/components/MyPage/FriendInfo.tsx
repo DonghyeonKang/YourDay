@@ -9,9 +9,9 @@ export function FriendInfo() {
   async function fetchData() {
     try {
       const friend_list = await axios.get(
-        "http://localhost:3001/mypage/friendList"
+        "http://localhost:3001/friends/getAllFriends/2" //TODO session id로 수정
       );
-      const array = friend_list.data[0].map((friend:any) => (friend));
+      const array = friend_list.data.map((friend:any) => (friend));
       setFriends(array);
     } catch (err) {
       console.log(err);

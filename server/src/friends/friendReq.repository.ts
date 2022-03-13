@@ -9,8 +9,7 @@ import { ReceivedReq } from './entities/friendReq.entity';
 export class ReceivedReqRepository extends Repository<ReceivedReq> {
     
 
-    async createReceivedReq(username: string,
-        createReceivedReqDto: User,
+    async createReceivedReq(createReceivedReqDto: User,
     ): Promise<any> {
         const { name, email } = createReceivedReqDto;
 
@@ -25,7 +24,26 @@ export class ReceivedReqRepository extends Repository<ReceivedReq> {
         return ReceivedReq;
     }
 
-    
+    async checkUserFriendReq(email: string) {
+        //TODO session email 수정
+        const session_email = "dbstn6477@gmail.com";
+
+        const gmail = email + "@gmail.com";
+        const result = await this
+            .createQueryBuilder('received_req')
+            .innerJoin('received_req.user', 'user')
+            .where('user.email = :email', { email: gmail })
+            .getMany();
+
+        let check = Boolean(false);
+        result.map((req)=> {
+            if(req.email === session_email){
+                check = Boolean(true);
+            }
+        });
+        return check;
+
+    }
 
 
 

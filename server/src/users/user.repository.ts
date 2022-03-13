@@ -47,10 +47,8 @@ export class UserRepository extends Repository<User> {
   }
 
   async getUserAllFriends(): Promise<any> {
-    // return this.find();
-
     //유저 정보 검수과정 더 필요
-
+    
     const friend_list = await this.find();
     // console.log(friend_list);
     if (!friend_list) {
@@ -78,10 +76,13 @@ export class UserRepository extends Repository<User> {
 
     const received_req = [];
     received_req__list.forEach((req) => {
-      received_req.push(req.recived_reqs);
+      received_req.push(req.received_reqs);
     });
     return received_req;
   }
+
+
+
 
   private async checkExistByEmail(emailAddress: string): Promise<boolean> {
     // console.log(emailAddress);
@@ -124,7 +125,7 @@ export class UserRepository extends Repository<User> {
 
   async getUserByEmail(email: string): Promise<String> {
     // const { name } = searchUserDto;
-    //2
+    //
     const gmail = email + '@gmail.com';
     const exist = await this.checkExistByEmail(gmail);
     if (!exist) {
@@ -141,22 +142,6 @@ export class UserRepository extends Repository<User> {
     return found_user;
   }
 
-  async checkUserFriendReq(email: string): Promise<any> {
-    const gmail = email + '@gmail.com';
-    const found = await this.find({ email: gmail });
-
-    let check = Boolean(false);
-    const session_email = "dbstn6477@gmail.com";
-    found.forEach((req) => {
-      req.recived_reqs.map((e) => {
-        if(e.email === session_email){
-          check = Boolean(true);
-        }
-      });
-    });
-    return check;
-    
-  }
 
   async deleteUser(id: number): Promise<any> {
     const result = await this.delete(id);
