@@ -1,5 +1,5 @@
 
-import { ConsoleLogger, Header, Request, Res, Response } from '@nestjs/common';
+import { ConsoleLogger, Header, Request, Res, Response, Session } from '@nestjs/common';
 
 import { Body, Controller, Delete, Get, Param, ParseIntPipe, Post, UseGuards,Req } from '@nestjs/common';
 
@@ -11,6 +11,7 @@ import { AxiosResponse } from "axios";
 
 // google Authentication
 import { AuthGuard } from '@nestjs/passport';
+import { stringify } from 'querystring';
 
 
 
@@ -26,21 +27,39 @@ export class UsersController {
     @Get('auth/google/callback')
     @UseGuards(AuthGuard('google'))
     googleAuthredirect(@Req() req){
-        return this.usersService.googleLogin(req)
+        const user = req.user;
+        console.log(req.user);
+        return this.usersService.createUser(user);
     }
+
+
     @Get('/')
     getUserName(): Promise<any> {
         return this.usersService.getUserName();
     }
 
     @Get('/info')
-    getUserInfo(): Promise<any> {
-        return this.usersService.getUserInfo();
+    getUserInfo(@Body() name): any {
+        // console.log(name.name);
+        return this.usersService.getUserInfo(name.name);
     }
 
+
     @Get('/friendList')
-    getAllUsers(): Promise<any> {
-        return this.usersService.getAllUser();
+    getUserAllFriends(): Promise<any> {
+        return this.usersService.getUserAllFriends();
+    }
+
+    @Get('/friendReqList')
+    getUserAllFriendReqs(): Promise<any> {
+        return this.usersService.getUserAllFriendReqs();    
+    }
+
+    
+    //윤수 찾을 때,
+    @Get('/friendList/edit/:email')
+    getUserByEmail(@Param('email') email: string): Promise<String> {
+        return this.usersService.getUserByEmail(email);
     }
 
     //편집(삭제, 찾을때)
@@ -49,10 +68,11 @@ export class UsersController {
         return this.usersService.deleteUser(id);
     }
     
-    //윤수 찾을 때,
-    @Get('/friendList/edit/:name')
-    getUserById(@Param('name') name: string): Promise<String> {
-        return this.usersService.getUserById(name);
+
+    //요청 목록 중복처리
+    @Post('/check/req')
+    checkUserFriendReq(@Body('email') email:string): any{
+        return this.usersService.checkUserFriendReq(email);
     }
 
     // @Get('/friendList/edit')
@@ -69,7 +89,8 @@ export class UsersController {
         // return console.log(res.req.body);
         
         const {
-            name: n,
+            firstname: fn,
+            lastname: ln,
             email: e,
         } = createUserDto;
 

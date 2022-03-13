@@ -1,8 +1,8 @@
 import { Injectable, Body } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { FriendRepository } from './friend.repository';
-import { Friend } from './friend.entity';
-import { CreateFriendDto } from './dto/create-friend.dto';
+import { Friend } from './entities/friend.entity';
+import { User } from '../users/user.entity';
 
 @Injectable()
 export class FriendsService {
@@ -12,11 +12,15 @@ export class FriendsService {
     ){}
 
 
-    createFriend(@Body() createFriendDto: CreateFriendDto,
-    username: string): Promise<any> {
-        return this.friendRepository.createFriend(createFriendDto, username);
+    createFriend(username: string,
+        createFriendDto: User,
+    ): Promise<Friend> {
+        return this.friendRepository.createFriend(username, createFriendDto);
     }
+
+    getFriend(username: string) {
+        return this.friendRepository.getFriend("정윤수");
+    }
+
     
-
-
 }

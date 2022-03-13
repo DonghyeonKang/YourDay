@@ -13,7 +13,7 @@ interface propTypes {
 const chart = (props: propTypes) => {
   const data = {
     dataPie: {
-      labels: ["수행한 시간", "미등록 시간", "낭비한 시간"],
+      labels: ["수행한 시간", "낭비한 시간", "미등록 시간"],
       datasets: [
         {
           data: props.data,

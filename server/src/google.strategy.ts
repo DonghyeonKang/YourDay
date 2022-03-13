@@ -20,8 +20,8 @@ export class GoogleStrategy extends PassportStrategy (Strategy, 'google'){
             email: emails[0].value,
             firstname : name.givenName,
             lastname : name.familyName,
-            picture : photos[0].value,
-            accessToken
+            // picture : photos[0].value,
+            // accessToken
         }
         done(null, user);
     }

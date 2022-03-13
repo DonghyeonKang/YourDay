@@ -55,8 +55,9 @@ function getDataByMode(mode: number, data: number[][][]): number[][] {
 function MyDays() {
   const [chartType, setChartType] = useState(0);
   const [chartMode, setChartMode] = useState(0);
-  const [dataset, setDataset] = useState([[[0]]]);
-  const [data, setData] = useState([[0]]);
+  const [dataset, setDataset] = useState([[[0]]]);  // chart Module 에서 받을 데이터
+  const [dayData, setDayData] = useState([]);   // pie chart 에서 쓸 데이터
+  const [data, setData] = useState([[0]]);  // bar chart에서 쓸 데이터
   const [chartName, setChartName] = useState("일");
   const [navButtonName, setNavButtonName] = useState([
     "day selected",
@@ -65,7 +66,7 @@ function MyDays() {
     "year",
   ]);
 
-  // 데이터 받아오기
+  // 백엔드 chart module에서 데이터 받아오기
   useEffect(() => {
     fetch(`http://localhost:3001/mydays/123123413412414`) //TODO id로 바꿔줘야함
       .then((res) => res.json())
@@ -77,6 +78,22 @@ function MyDays() {
             tmp.push(editData(result, i));
           }
           setDataset(tmp);
+        }, // 주의: 컴포넌트에 있는 실제 버그로 인해 발생한 예외를 놓치지 않고 처리하기 위해서는 catch() 블록보다는 여기서 에러를 다뤄주는 게 중요합니다.
+        (error) => {
+          console.log(error);
+        }
+      );
+  }, []);
+
+  // 백엔드 schedule module에서 데이터 받아오기
+  useEffect(() => {
+    fetch(`http://localhost:3001/schedule/1`) //TODO id로 바꿔줘야함
+      .then((res) => res.json())
+      .then(
+        (result) => { //  [saveTime, wasteTime, noneTime]
+          console.log(result);
+          
+          setDayData(result);
         }, // 주의: 컴포넌트에 있는 실제 버그로 인해 발생한 예외를 놓치지 않고 처리하기 위해서는 catch() 블록보다는 여기서 에러를 다뤄주는 게 중요합니다.
         (error) => {
           console.log(error);
@@ -147,6 +164,7 @@ function MyDays() {
               setChartMode={setChartMode}
               chartName={chartName}
               data={data}
+              dayData={dayData}
             />
           </div>
         </section>
