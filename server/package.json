@@ -32,6 +32,7 @@
     "axios": "^0.26.0",
     "cors": "^2.8.5",
     "dotenv": "^16.0.0",
+    "googleapis": "^95.0.0",
     "mysql2": "^2.3.3",
     "node-fetch": "^2.6.7",
     "node-schedule": "^2.1.0",

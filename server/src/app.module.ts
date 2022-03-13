@@ -13,9 +13,10 @@ import { CronModule } from './cron/cron.module';
   imports: [
     ScheduleModule.forRoot(),
     TypeOrmModule.forRoot({
-      type: 'mysql',
-      host: 'localhost',
+      type: "mysql",
+      host: "localhost",
       port: 3306,
+
       username: 'irosh',
       password: 'syoro223',
       database: 'yourday',
