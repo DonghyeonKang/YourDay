@@ -18,5 +18,9 @@ export class FriendsService {
         return this.friendRepository.createFriend(username, createFriendDto);
     }
 
+    getFriend(username: string) {
+        return this.friendRepository.getFriend("정윤수");
+    }
+
     
 }

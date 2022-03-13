@@ -1,4 +1,4 @@
-import { Injectable, Body } from '@nestjs/common';
+import { Injectable, Body, Param } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 
 import { User } from '../users/user.entity';
@@ -17,5 +17,11 @@ export class FriendReqService {
         createFriendReqDto: User,
     ): Promise<ReceivedReq> {
         return this.receivedReqRepository.createReceivedReq(username, createFriendReqDto);
+    }
+
+
+
+    deleteFriendRequest(id: any): Promise<any> {
+        return this.receivedReqRepository.deleteFriendRequest(id);
     }
 }

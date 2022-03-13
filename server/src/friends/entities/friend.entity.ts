@@ -10,6 +10,7 @@ export class Friend extends BaseEntity {
     @Column()
     name: string;
 
+
     @ManyToOne(type => User, user => user.friends, { eager: false })
     user: User;
 }

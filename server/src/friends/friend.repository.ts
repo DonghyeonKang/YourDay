@@ -22,7 +22,15 @@ export class FriendRepository extends Repository<Friend> {
         });
         await this.save(friend);
         return friend;
-    } 
+    }
 
-    
+    async getFriend(username: string): Promise<any> {
+        // const name = "정윤수";
+        
+        // const friends = await this.find({name: name});
+        // console.log(`찾은 ${friends}`);
+        // return friends;
+    }
+
+
 }

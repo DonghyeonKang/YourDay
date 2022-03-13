@@ -11,6 +11,7 @@ import { AxiosResponse } from "axios";
 
 // google Authentication
 import { AuthGuard } from '@nestjs/passport';
+import { stringify } from 'querystring';
 
 
 
@@ -43,9 +44,22 @@ export class UsersController {
         return this.usersService.getUserInfo(name.name);
     }
 
+
     @Get('/friendList')
-    getAllUsers(): Promise<any> {
-        return this.usersService.getAllUser();
+    getUserAllFriends(): Promise<any> {
+        return this.usersService.getUserAllFriends();
+    }
+
+    @Get('/friendReqList')
+    getUserAllFriendReqs(): Promise<any> {
+        return this.usersService.getUserAllFriendReqs();    
+    }
+
+    
+    //윤수 찾을 때,
+    @Get('/friendList/edit/:email')
+    getUserByEmail(@Param('email') email: string): Promise<String> {
+        return this.usersService.getUserByEmail(email);
     }
 
     //편집(삭제, 찾을때)
@@ -54,10 +68,11 @@ export class UsersController {
         return this.usersService.deleteUser(id);
     }
     
-    //윤수 찾을 때,
-    @Get('/friendList/edit/:name')
-    getUserById(@Param('name') name: string): Promise<String> {
-        return this.usersService.getUserById(name);
+
+    //요청 목록 중복처리
+    @Post('/check/req')
+    checkUserFriendReq(@Body('email') email:string): any{
+        return this.usersService.checkUserFriendReq(email);
     }
 
     // @Get('/friendList/edit')

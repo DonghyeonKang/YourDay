@@ -10,6 +10,9 @@ export class ReceivedReq extends BaseEntity {
     @Column()
     name: string;
 
+    @Column()
+    email: string;
+
     @ManyToOne(type => User, user => user.recived_reqs, { eager: false })
     user: User;
 }

@@ -18,9 +18,13 @@ export class UsersService {
     }
 
     //Promise<any>
-    async getUserInfo(name: string): Promise<any>{
+    async getUserInfo(email: string): Promise<any>{
         // console.log(`service: ${name}`);
-        return this.userRepository.getUserInfo(name);
+        return this.userRepository.getUserInfo(email);
+    }
+
+    async checkUserFriendReq(email: string): Promise<any> {
+        return this.userRepository.checkUserFriendReq(email);
     }
     
     // googleLogin(req:any){
@@ -36,20 +40,24 @@ export class UsersService {
     // }
 
     //친구목록 다 찾기
-    getAllUser(): Promise<any> {
-        return this.userRepository.getAllUser();
+    getUserAllFriends(): Promise<any> {
+        return this.userRepository.getUserAllFriends();
+    }
+
+    getUserAllFriendReqs(): Promise<any> {
+        return this.userRepository.getUserAllFriendReqs();
     }
 
 
     ////윤수 찾기=> user.exist(id) -> const user = user.find(id, ) -> return user.name
 
     
-    getUserById(name: string): Promise <String> {
-        return this.userRepository.getUserById(name);
+    getUserByEmail(email: string): Promise <String> {
+        return this.userRepository.getUserByEmail(email);
     }
 
 
-    
+
     // getUserById(searchUserDto: SearchUserDto): Promise <String> {
     //     return this.userRepository.getUserById(searchUserDto);
     // }

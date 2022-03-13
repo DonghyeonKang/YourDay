@@ -1,18 +1,18 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link as ReactRouterDomLink } from "react-router-dom";
+import styled from "styled-components";
 
 export function FriendInfo() {
-  const [users, setUsers] = useState([]);
-  const [userId, setUserId] = useState(0);
+  const [friends, setFriends] = useState([]);
 
   async function fetchData() {
     try {
-      const friendList = await axios.get(
+      const friend_list = await axios.get(
         "http://localhost:3001/mypage/friendList"
       );
-
-      setUsers(friendList.data);
+      const array = friend_list.data[0].map((friend:any) => (friend));
+      setFriends(array);
     } catch (err) {
       console.log(err);
     }
@@ -20,22 +20,29 @@ export function FriendInfo() {
 
   useEffect(() => {
     fetchData();
-  }, []);
+  });
 
   //{`/${user.id}`}
+
+  const Link = ({ children, ...props }: any) => {
+    return <ReactRouterDomLink {...props}>{children}</ReactRouterDomLink>;
+  };
+
+  const StyledLink = styled(Link)`
+    color: white;
+    text-decoration: none;
+  `;
+
   return (
     <div className="mypage_friendInfo">
-      {users.map((user) => (
-        <span>
-          <Link to="#" style={{ textDecoration: "none", color: "white" }}>
-            {" "}
-            {user}{" "}
-          </Link>
-        </span>
-      ))}
-      {/* 친구 요청목록  */}
-      {/* <span> 소열 </span>
-          <span> 윤수 </span> */}
+      <div>
+        {friends.map((friend:any) => (
+          <div key={friend.friend_id}>
+            {/* <Link to="#">{friend.name}</Link> */}
+            {friend.name}
+          </div>
+         ) )}
+      </div>
     </div>
   );
 }

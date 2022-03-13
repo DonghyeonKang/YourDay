@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, Req } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Post, Req, Param, NotFoundException } from '@nestjs/common';
 import { FriendsService } from './friends.service';
 import { Friend } from './entities/friend.entity';
 import { CreateFriendDto } from './dto/create-friend.dto';
@@ -19,13 +19,14 @@ export class FriendsController {
 
   //createFriend(@Body() createFriendDto: CreateFriendDto,
   // @Body() user: User): any {
+
     //친구 등록
   @Post('/')
-  createFriend(@Body() name): any {
-    const foundUser = this.usersService.getUserInfo('정윤수');
+  createFriend(@Body('email') email: string): any {
+    const foundUser = this.usersService.getUserInfo(email);
     foundUser
       .then((user) => {
-        user.forEach((info) => {
+        user.forEach((info:any) => {
           return this.friendService.createFriend('정윤수', info);
         });
       })
@@ -35,14 +36,28 @@ export class FriendsController {
       });
   }
 
+  @Get('/get')
+  getFriend(@Body() name): any {
+    return this.friendService.getFriend("정윤수");
+  }
+
+  
+
+
   //친구 요청 보내는 곳
-  @Post('/send')
-  sendFriendRequest(@Body() name): any {
-    const foundUser = this.usersService.getUserInfo('정윤수');
-    foundUser
+  @Post('/req/send')
+  sendFriendRequest(@Body('email') email:string): any {
+    
+    const exist = this.usersService.checkUserFriendReq(email);
+
+    return exist.then((result) => {
+      if(result !== false){
+        return "duplicated request";
+      }
+      
+      return this.usersService.getUserInfo(email)
       .then((user) => {
-        // this.friendService.createFriend();
-        user.forEach((info) => {
+        user.forEach((info:any) => {
           console.log(info);
           return this.friendReqService.createFriendReq('정윤수', info);
         });
@@ -51,6 +66,18 @@ export class FriendsController {
         console.log(err);
         return err;
       });
+    });
+
+    
   }
+
+  
+  
+  @Delete('/req/delete/:id')
+  deleteFriendRequest(@Param('id') id: any): any {
+    return this.friendReqService.deleteFriendRequest(id);
+  }
+
+  
 
 }
