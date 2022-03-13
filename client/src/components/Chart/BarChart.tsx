@@ -39,9 +39,7 @@ const chart = (props: propTypes) => {
     ];
   }
 
-  const timedata = props.data.map(v => v[1]);
-  console.log(timedata);
-  
+  const timedata = props.data.map(v => v[1]);  
   const data = {
     dataBar: {
       labels: x_element,

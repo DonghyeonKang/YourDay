@@ -55,7 +55,11 @@ export class UserRepository extends Repository<User> {
     // console.log(friend_list);
     if (!friend_list) {
       throw new NotFoundException('친구목록이 비어있습니다');
+    // 모든 사용자의 데이터를 가져옴
+    async getAllUsersData() : Promise <any> {  // SELECT "user_id" FROM "user"
+        return this.find();
     }
+}
 
     const friends = [];
     friend_list.forEach((user) => {

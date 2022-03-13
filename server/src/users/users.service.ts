@@ -3,7 +3,6 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { User } from './user.entity';
 import { UserRepository } from './user.repository';
 import { CreateUserDto, SearchUserDto } from './dto/create-user.dto';
-import { UserStatus } from './user-Status.enum';
 
 
 @Injectable()
@@ -12,6 +11,14 @@ export class UsersService {
         @InjectRepository(UserRepository) //서비스안에서 Reposiory사용.
         private userRepository: UserRepository,
     ){}
+
+
+    // 모든 사용자의 데이터를 가져옴 cron service에서 사용중
+    getAllUsersData(): Promise<any> {  
+        return this.userRepository.getAllUsersData();
+    }
+
+
 
     getUserName(): Promise<any> {
         return this.userRepository.getUserName();

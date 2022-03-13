@@ -6,7 +6,6 @@ import { UserRepository } from './user.repository';
 import { AuthModule } from 'src/auth/auth.module';
 import { GoogleStrategy } from 'src/google.strategy';
 
-
 @Module({
   imports: [
     TypeOrmModule.forFeature([UserRepository]),
