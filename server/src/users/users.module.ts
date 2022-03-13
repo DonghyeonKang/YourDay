@@ -12,6 +12,6 @@ import { GoogleStrategy } from 'src/google.strategy';
   ],  //User module에서 Repository 쓸 준비완료(typerom,entity)
   controllers: [UsersController],
   providers: [UsersService, GoogleStrategy],
-  exports: [UsersService]
+  exports: [UsersService],
 })
 export class UsersModule {}

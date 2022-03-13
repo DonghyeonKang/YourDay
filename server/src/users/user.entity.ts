@@ -8,6 +8,7 @@ import {
 } from 'typeorm';
 import { UserStatus } from './user-Status.enum';
 import { Friend } from 'src/friends/friend.entity';
+import { ReceivedReq } from '../friends/entities/friendReq.entity';
 import { Chart } from 'src/mydays/mydays.entity';
 import { Schedule } from 'src/schedule/schedule.entity';
 
@@ -25,8 +26,11 @@ export class User extends BaseEntity {
   @Column()
   ShareStatus: UserStatus;
 
-  @OneToMany((type) => Friend, (friend) => friend.user, { eager: true })
-  friends: Friend[];
+  @OneToMany(type => ReceivedReq, recived_req => recived_req.user, { eager: true })
+    recived_reqs: ReceivedReq[];
+
+  @OneToMany(type => Friend, friend => friend.user, { eager: true })
+    friends: Friend[];
 
   @OneToMany(
     (type) => Chart, (chart) => chart.user, { eager: true }  // 다른 데이터 조회시 연관된 데이터 모두 가져오기 때문에 낭비일 수 있다.
