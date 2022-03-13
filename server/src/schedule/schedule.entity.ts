@@ -13,7 +13,7 @@ export class Schedule extends BaseEntity {
     start_time: string;
     
     @Column({ type: 'datetime' })  
-    end_time: string;    
+    end_time: string;
     
     @Column()
     percent: number;

@@ -93,7 +93,7 @@ function MyDays() {
         (result) => { //  [saveTime, wasteTime, noneTime]
           console.log(result);
           
-          setDayData(result);          
+          setDayData(result);
         }, // 주의: 컴포넌트에 있는 실제 버그로 인해 발생한 예외를 놓치지 않고 처리하기 위해서는 catch() 블록보다는 여기서 에러를 다뤄주는 게 중요합니다.
         (error) => {
           console.log(error);

@@ -10,4 +10,9 @@ export class ScheduleController {
     getScheduleTimeData(@Param('id') id: string): any {
         return this.scheduleService.getTime(id);
     }
+
+    @Get('/dayWasted/:id')
+    getDayWastedTimeData(@Param('id') id: string): any {
+        return this.scheduleService.getWastedTime(id);
+    }
 }

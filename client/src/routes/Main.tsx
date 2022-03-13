@@ -4,6 +4,7 @@ import Header from "../components/Header/Header";
 import styled from "styled-components";
 import img from "../assets/backgound.png";
 import { useState, useEffect } from "react";
+import axios from 'axios';
 
 
 const StyledDiv = styled.div`
@@ -28,9 +29,26 @@ const StyledDiv = styled.div`
   }
 `;
 
+const getWastedTime = async(id: any) => {
+  
+}
+
 function Main() {
   const [timer, setTimer] = useState("Loading...");
   const [restTime, setRestTime] = useState("Loading...");
+  const [wastedMinutes, setWastedMinutes] = useState(0);
+  const [wastedTime, setWatedTime] = useState("Loading...");
+
+  useEffect( () => {
+    axios.get(`http://localhost:3001/schedule/dayWasted/1`)
+    .then((result) => {
+      setWastedMinutes(result.data);
+    },
+    (error)=> {
+      console.log(error);
+    });
+  },[]);
+  
 
   const currentTimer = () => {
     const date = new Date();
@@ -44,29 +62,37 @@ function Main() {
   const restTimer = () => {
     const date = new Date();
     const hours = String(23-date.getHours()).padStart(2, "0");
-    const minutes = String(60-date.getMinutes()).padStart(2, "0");
+    const minutes = String(59-date.getMinutes()).padStart(2, "0");
     const seconds = String(60-date.getSeconds()).padStart(2, "0");
 
     setRestTime(`${hours}:${minutes}:${seconds}`);
   };
 
-  
+  const wastedTimer = () => {
+    const min = wastedMinutes;
+    const hours = String(min/60).padStart(1, "0");
+    const minutes = String(min).padStart(1, "0");
+    
+    setWatedTime(`${hours} h : ${minutes} m `);
+    
+  }
 
   
-
   setInterval(currentTimer, 1000);
   useInterval(() => {
     restTimer();
+    wastedTimer();
   }, 1000);
+
 
   return (
     <StyledDiv>
       <Header selected={0} />
       <div className="Main">
         <div className="content">
-          <h2>현재 시간: {timer}</h2>
-          <h2>남은 시간: {restTime}</h2>
-          <h2>낭비한 시간: </h2>
+          <h2>현재 시간: {timer} </h2>
+          <h2>남은 시간: {restTime} </h2>
+          <h2>낭비한 시간: {wastedTime} </h2>
         </div>
       </div>
     </StyledDiv>
