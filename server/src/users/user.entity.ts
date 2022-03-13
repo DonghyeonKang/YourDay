@@ -7,7 +7,7 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { UserStatus } from './user-Status.enum';
-import { Friend } from 'src/friends/friend.entity';
+import { Friend } from 'src/friends/entities/friend.entity';
 import { ReceivedReq } from '../friends/entities/friendReq.entity';
 import { Chart } from 'src/mydays/mydays.entity';
 import { Schedule } from 'src/schedule/schedule.entity';
