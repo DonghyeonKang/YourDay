@@ -31,14 +31,11 @@ interface dataTypes {
   chart_id: number;
   time: number;
   date: number;
-  mode: number;
-  member_id: string;
 }
 
 // 가져온 데이터 수정
-function editData(data: dataTypes[], n: number): number[][] {
-  const tmp = data.filter((v) => v.mode == n);
-  const editedData = tmp.map((a) => {
+function editData(data: dataTypes[]): number[][] {
+  const editedData = data.map((a) => {
     return [a.date, a.time];
   });
   return editedData.sort();
@@ -68,15 +65,15 @@ function MyDays() {
 
   // 백엔드 chart module에서 데이터 받아오기
   useEffect(() => {
-    fetch(`http://localhost:3001/mydays/123123413412414`) //TODO id로 바꿔줘야함
+    fetch(`http://localhost:3001/mydays/1`) //TODO id로 바꿔줘야함
       .then((res) => res.json())
       .then(
         (result) => {
-          const tmp = [];
-
+          const tmp = [];          
           for (let i = 0; i < 3; i++) {
-            tmp.push(editData(result, i));
+            tmp.push(editData(result[i]));
           }
+          
           setDataset(tmp);
         }, // 주의: 컴포넌트에 있는 실제 버그로 인해 발생한 예외를 놓치지 않고 처리하기 위해서는 catch() 블록보다는 여기서 에러를 다뤄주는 게 중요합니다.
         (error) => {
@@ -91,8 +88,6 @@ function MyDays() {
       .then((res) => res.json())
       .then(
         (result) => { //  [saveTime, wasteTime, noneTime]
-          console.log(result);
-          
           setDayData(result);
         }, // 주의: 컴포넌트에 있는 실제 버그로 인해 발생한 예외를 놓치지 않고 처리하기 위해서는 catch() 블록보다는 여기서 에러를 다뤄주는 게 중요합니다.
         (error) => {

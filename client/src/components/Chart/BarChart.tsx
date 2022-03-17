@@ -17,25 +17,19 @@ Chart.register(CategoryScale);
 Chart.register(...registerables);
 
 const chart = (props: propTypes) => {
-  let x_element = ["월", "화", "수", "목", "금", "토", "일"];
+  let x_element = ["7일 전", "6일 전", "5일 전", "4일 전", "3일 전", "2일 전", "1일 전"];
   if (props.chartMode == 1) {
-    x_element = ["월", "화", "수", "목", "금", "토", "일"];
+    x_element = ["7일 전", "6일 전", "5일 전", "4일 전", "3일 전", "2일 전", "1일 전"];
   } else if (props.chartMode == 2) {
-    x_element = ["1주차", "2주차", "3주차", "4주차"];
+    x_element = [ "4주 전", "3주 전", "2주 전", "1주 전" ];
   } else if (props.chartMode == 3){
     x_element = [
-      "1월",
-      "2월",
-      "3월",
-      "4월",
-      "5월",
-      "6월",
-      "7월",
-      "8월",
-      "9월",
-      "10월",
-      "11월",
-      "12월",
+      "6개월 전",
+      "4개월 전",
+      "5개월 전",
+      "3개월 전",
+      "2개월 전",
+      "1개월 전"
     ];
   }
 

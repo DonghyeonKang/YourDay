@@ -3,7 +3,7 @@ import { Cron } from '@nestjs/schedule';
 import { ChartService } from 'src/mydays/mydays.service';
 import { ScheduleService } from 'src/schedule/schedule.service';
 import { UsersService } from 'src/users/users.service';
-import { Chart } from 'src/mydays/mydays.entity';
+import { ChartWeek } from 'src/mydays/entities/mydays_week.entity';
 
 @Injectable()
 export class CronService {
@@ -60,13 +60,12 @@ export class CronService {
     let date = new Date();
 
     // 시간 날짜 모드 chart 객체에 입력
-    const chart = new Chart();
+    const chart = new ChartWeek();
     chart.time = totalTime;
     chart.date = String(date.getFullYear()) + "-" + String(date.getMonth() + 1) + "-" + String(date.getDate() - 1); // 시간 데이터 string으로 구성
-    chart.mode = 0;
     chart.user = userData;
     userData.charts.push(chart);
 
-    await this.chartService.saveUserChart(chart);
+    await this.chartService.saveChartWeek(chart);
   }
 }
