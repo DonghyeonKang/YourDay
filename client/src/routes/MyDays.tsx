@@ -107,7 +107,6 @@ function MyDays() {
               <div
                 className={navButtonName[0]}
                 onClick={() => {
-                  setChartType(0);
                   setChartMode(0);
                   setChartName("일");
                   setNavButtonName(["day selected", "week", "month", "year"]);
@@ -118,7 +117,6 @@ function MyDays() {
               <div
                 className={navButtonName[1]}
                 onClick={() => {
-                  setChartType(1);
                   setChartMode(1);
                   setChartName("주");
                   setData(getDataByMode(0, dataset));
@@ -130,7 +128,6 @@ function MyDays() {
               <div
                 className={navButtonName[2]}
                 onClick={() => {
-                  setChartType(2);
                   setChartMode(2);
                   setChartName("월");
                   setData(getDataByMode(1, dataset));
@@ -142,7 +139,6 @@ function MyDays() {
               <div
                 className={navButtonName[3]}
                 onClick={() => {
-                  setChartType(3);
                   setChartMode(3);
                   setChartName("년");
                   setData(getDataByMode(2, dataset));

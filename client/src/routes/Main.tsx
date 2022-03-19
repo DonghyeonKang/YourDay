@@ -48,7 +48,6 @@ function Main() {
       console.log(error);
     });
   },[]);
-  
 
   const currentTimer = () => {
     const date = new Date();
@@ -74,7 +73,6 @@ function Main() {
     const minutes = String(min).padStart(1, "0");
     
     setWatedTime(`${hours} h : ${minutes} m `);
-    
   }
 
   

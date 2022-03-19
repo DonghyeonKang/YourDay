@@ -4,7 +4,7 @@ import BarChart from "./BarChart";
 import PieChart from "./PieChart";
 
 interface propTypes {
-  chartType: number;
+  chartType: number;  // 0 = 수행한 시간, 1 = 낭비한 시간
   setChartType: (num: number) => void;
   chartMode: number;
   setChartMode: (num: number) => void;

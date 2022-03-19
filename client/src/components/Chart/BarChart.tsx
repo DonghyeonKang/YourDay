@@ -1,14 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import "./css/Chart.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Bar } from "react-chartjs-2";
 import { MDBContainer } from "mdbreact";
 import { Chart, CategoryScale, registerables } from "chart.js";
-import { addAbortSignal } from "stream";
 import { propTypes } from "react-bootstrap/esm/Image";
 
 interface propTypes {
-  chartType: number;
+  chartType: number;  // 0 = 수행한 시간, 1 =낭비한 시간
   data: number[][];
   chartMode: number;
 }
@@ -16,7 +15,7 @@ interface propTypes {
 Chart.register(CategoryScale);
 Chart.register(...registerables);
 
-const chart = (props: propTypes) => {
+const BarChart = (props: propTypes) => {
   let x_element = ["7일 전", "6일 전", "5일 전", "4일 전", "3일 전", "2일 전", "1일 전"];
   if (props.chartMode == 1) {
     x_element = ["7일 전", "6일 전", "5일 전", "4일 전", "3일 전", "2일 전", "1일 전"];
@@ -32,15 +31,65 @@ const chart = (props: propTypes) => {
       "1개월 전"
     ];
   }
+  
+  const saveTimeData = props.data.map(x => x[1]);
+  const wasteTimeData = []  
+  for(let i = 0; i < props.data.length; i++) {
+    wasteTimeData.push(24 - props.data[i][1])
+  }  
 
-  const timedata = props.data.map(v => v[1]);  
-  const data = {
+  const data_save = {
     dataBar: {
       labels: x_element,
       datasets: [
         {
           label: "수행시간",
-          data: timedata,
+          data: saveTimeData,
+          backgroundColor: [
+            "rgba(255, 134,159,0.4)",
+            "rgba(98,  182, 239,0.4)",
+            "rgba(255, 218, 128,0.4)",
+            "rgba(113, 205, 205,0.4)",
+            "rgba(170, 128, 252,0.4)",
+            "rgba(255, 177, 101,0.4)",
+            "rgba(230, 157, 201,0.4)",
+          ],
+          borderWidth: 2,
+          borderColor: [
+            "rgba(255, 134, 159, 1)",
+            "rgba(98,  182, 239, 1)",
+            "rgba(255, 218, 128, 1)",
+            "rgba(113, 205, 205, 1)",
+            "rgba(170, 128, 252, 1)",
+            "rgba(255, 177, 101, 1)",
+            "rgba(230, 157, 201, 1)",
+          ],
+        },
+      ],
+    },
+    options: {
+      scales: {
+        y: {
+          ticks: {
+            color: "white",
+          },
+        },
+        x: {
+          ticks: {
+            color: "white",
+          },
+        },
+      },
+    },
+  };
+  
+  const data_waste = {
+    dataBar: {
+      labels: x_element,
+      datasets: [
+        {
+          label: "수행시간",
+          data: wasteTimeData,
           backgroundColor: [
             "rgba(255, 134,159,0.4)",
             "rgba(98,  182, 239,0.4)",
@@ -79,13 +128,24 @@ const chart = (props: propTypes) => {
     },
   };
 
-  return (
-    <>
+  if(props.chartType == 0) {
+    return (
+      <>
       <MDBContainer>
-        <Bar data={data.dataBar} options={data.options} />
+        <Bar data={data_save.dataBar} options={data_save.options} />
       </MDBContainer>
     </>
   );
+} else {
+  return (
+    <>
+    <MDBContainer>
+      <Bar data={data_waste.dataBar} options={data_waste.options} />
+    </MDBContainer>
+  </>
+);
+
+}
 };
 
-export default chart;
+export default BarChart;
