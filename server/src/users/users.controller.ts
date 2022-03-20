@@ -44,17 +44,6 @@ export class UsersController {
         return this.usersService.getUserInfo(email);
     }
 
-
-    @Get('/friendList')
-    getUserAllFriends(): Promise<any> {
-        return this.usersService.getUserAllFriends();
-    }
-
-    @Get('/friendReqList')
-    getUserAllFriendReqs(): Promise<any> {
-        return this.usersService.getUserAllFriendReqs();    
-    }
-
     
     //윤수 찾을 때,
     @Get('/friendList/edit/:email')
@@ -68,17 +57,6 @@ export class UsersController {
         return this.usersService.deleteUser(id);
     }
     
-
-    //요청 목록 중복처리
-    @Post('/check/req')
-    checkUserFriendReq(@Body('email') email:string): any{
-        return this.usersService.checkUserFriendReq(email);
-    }
-
-    // @Get('/friendList/edit')
-    // getUserById(@Body() searchUserDto: SearchUserDto): Promise<String> {
-    //     return this.usersService.getUserById(searchUserDto);
-    // }
 
     //윤수 만들 때,
     @Post('/login')

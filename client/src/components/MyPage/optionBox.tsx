@@ -14,16 +14,16 @@ export function OptionBox(prop: PeriodNavProps) {
   const [friend, setFriend] = useState("");
   const [friendExist, setFriendExist] = useState(false);
   const [requestTo, setRequestTo] = useState("");
-  const [reqStatus, setReqStatus] = useState("");
+  const [reqStatus, setReqStatus] = useState(false);
   const [reqFriendsName, setReqFriendsName] = useState([]);
 
 
   const fetchReqList = async() => {
     try {
       const friend_req__list = await axios.get(
-        "http://localhost:3001/mypage/friendReqList"
+        "http://localhost:3001/friends/req/get"
       );
-      const array = friend_req__list.data[0].map((req:any)=> req);
+      const array = friend_req__list.data.map((req:any)=> req);
       setReqFriendsName(array);
 
     } catch(err) {
@@ -64,47 +64,38 @@ export function OptionBox(prop: PeriodNavProps) {
 
 
   const handleFriendRequest = async () => {
-    // setReqStatus("send");
-    console.log("send");
-
     await axios
       .post("http://localhost:3001/friends/req/send", {email: requestTo}, {})
       .then((e) => {
         if(e.data === "duplicated request"){
-          setFriend("발송된 요청입니다.");
+          setFriend("이미 발송된 요청입니다.");
+          setReqStatus(true);
+        }
+        if(e.data === "duplicated friend") {
+          setFriend("이미 등록된 친구입니다.");
+          setReqStatus(true);
         }
       });
-      
-    //친구 요청
-    // await axios
-    //   .post("http://localhost:3001/friends/req/send", { name: requestTo }, {})
-    //   .then((e) => {
-    //     if(e.status === 200) {
-          //이미 보낸 요청처리 => DB
-          
-          //1.해당유저 의 2.reqFriend에 있는지
-          //userDB에서 이름으로 정보->정보내에 reqFriendId email에 있는지 있으면, 또 추가안되게, 없으면 추가되게service
-
-          //화면에 메세지 띄우기 (친구 요청을 보냈습니다.)
-          //이미 보낸요청입니다 => 초록색으로 표시바뀌기
-      //   }
-      // });
   };
 
 
+
   const handleAccept = async(id:any, email:string) => {
-    await axios
-      .delete(`http://localhost:3001/friends/req/delete/${id}`)
-      .then(async(result) => {
-        if(result.status === 200) {
-          await axios
-            .post(`http://localhost:3001/friends`, {email,})
-            .then((e)=> {
-              console.log(e);
-            });
+      await axios
+        .post(`http://localhost:3001/friends`, {email,})
+        .then(async(e)=> {
+          if(e.data !== "duplicated request"){
+            return handleDelete(id);
         }
-      })
+      });
   }
+
+  const handleDelete = async(id: any) => {
+    return await axios
+      .delete(`http://localhost:3001/friends/req/delete/${id}`)
+      .then( () => fetchReqList() );
+  }
+  
 
   
   const handleSubmit = (event: any) => {
@@ -137,16 +128,18 @@ export function OptionBox(prop: PeriodNavProps) {
               </div>
             ) : (
               <div className="optionBox_inner-success">
+                {reqStatus !== false ?
+                  <span> {friend} </span>
+                :
+                <>
                 <span> {friend} </span>
-                {friend !== "발송된 요청입니다." ?
-                <FontAwesomeIcon
+                  <FontAwesomeIcon
                   onClick={handleFriendRequest}
                   type="submit"
                   icon={faCheckIcon}
                   className="friendRequest"
-                />
-                :
-                <></>
+                  />
+                </>
               }
               </div>
             )}
@@ -159,7 +152,7 @@ export function OptionBox(prop: PeriodNavProps) {
               <div key={req.received_req__id}>
                 <span>{req.name}</span>
                 <button onClick={ () => handleAccept(`${req.received_req__id}`, req.email)}>O</button>
-                <button>X</button> 
+                <button onClick={ () => handleDelete(`${req.received_req__id}`)}>X</button> 
               </div>
             ))}
           </div>
