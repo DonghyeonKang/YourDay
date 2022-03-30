@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { UsersModule } from './users/users.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthModule } from './auth/auth.module';
-import { ChartModule } from './mydays/mydays.module';
+import { ChartModule } from './chart/chart.module';
 import { FriendsModule } from './friends/friends.module';
 import { join } from 'path/posix';
 import { scheduleModule } from './schedule/schedule.module';

@@ -43,7 +43,7 @@ const BarChart = (props: propTypes) => {
       labels: x_element,
       datasets: [
         {
-          label: "수행시간",
+          label: "수행한 시간",
           data: saveTimeData,
           backgroundColor: [
             "rgba(255, 134,159,0.4)",
@@ -88,7 +88,7 @@ const BarChart = (props: propTypes) => {
       labels: x_element,
       datasets: [
         {
-          label: "수행시간",
+          label: "낭비한 시간",
           data: wasteTimeData,
           backgroundColor: [
             "rgba(255, 134,159,0.4)",

@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import { Cron } from '@nestjs/schedule';
-import { ChartService } from 'src/mydays/mydays.service';
+import { ChartService } from 'src/chart/chart.service';
 import { ScheduleService } from 'src/schedule/schedule.service';
 import { UsersService } from 'src/users/users.service';
-import { ChartWeek } from 'src/mydays/entities/mydays_week.entity';
+import { ChartWeek } from 'src/chart/entities/chart_week.entity';
 
 @Injectable()
 export class CronService {
@@ -20,12 +20,19 @@ export class CronService {
 
     for(let i = 0; i < userdata.length; i++) {
       // 각 사용자의 스케줄 데이터를 가져옴
-      const scheduleData = await this.scheduleModule.getData(userdata[i].user_id);
+      const scheduleData = await this.getScheduleData(userdata[i].user_id);
       const totalTime = await this.getTime(scheduleData);
-      await this.setData(userdata[i], totalTime.toFixed(1));
+      await this.saveChartWeek(userdata[i], totalTime.toFixed(1));
     }
     // schedule 테이블 초기화. 
-    this.scheduleModule.initializeTable();
+    const date = Date.prototype.getDate()
+    this.scheduleModule.deleteYesterdaySchedule(date);
+  }
+
+  // user의 schedule 데이터 가져오기
+  async getScheduleData(user_id) {
+    const data = await this.scheduleModule.getData(user_id);
+    return data;
   }
 
   //사용자 데이터 가져옴
@@ -55,8 +62,16 @@ export class CronService {
     return time;
   }
 
+  editDay() {
+
+  }
+
+  editWeek() {
+
+  }
+
   // 데이터를 저장함      
-  async setData(userData, totalTime) {
+  async saveChartWeek(userData, totalTime) {
     let date = new Date();
 
     // 시간 날짜 모드 chart 객체에 입력
@@ -67,5 +82,39 @@ export class CronService {
     userData.charts.push(chart);
 
     await this.chartService.saveChartWeek(chart);
+  }
+
+  async saveChartMonth(userData, totalTime) {
+    let date = new Date();
+
+    // 시간 날짜 모드 chart 객체에 입력
+    const chart = new ChartWeek();
+    chart.time = totalTime;
+    chart.date = String(date.getFullYear()) + "-" + String(date.getMonth() + 1) + "-" + String(date.getDate() - 1); // 시간 데이터 string으로 구성
+    chart.user = userData;
+    userData.charts.push(chart);
+
+    await this.chartService.saveChartMonth(chart);
+  }
+
+  async saveChartYear(userData, totalTime) {
+    let date = new Date();
+
+    // 시간 날짜 모드 chart 객체에 입력
+    const chart = new ChartWeek();
+    chart.time = totalTime;
+    chart.date = String(date.getFullYear()) + "-" + String(date.getMonth() + 1) + "-" + String(date.getDate() - 1); // 시간 데이터 string으로 구성
+    chart.user = userData;
+    userData.charts.push(chart);
+
+    await this.chartService.saveChartYear(chart);
+  }
+
+  async deleteOldestWeek() {
+    await this.chartService.deleteOldestWeek();
+  }
+
+  async deleteOldestMonth() {
+    await this.chartService.deleteOldestMonth();
   }
 }

@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import { User } from 'src/users/user.entity';
 import { EntityRepository, Repository } from 'typeorm';
-import { ChartMonth } from './entities/mydays_month.entity';
-import { ChartWeek } from './entities/mydays_week.entity';
-import { ChartYear } from './entities/mydays_year.entity';
+import { ChartMonth } from './entities/chart_month.entity';
+import { ChartWeek } from './entities/chart_week.entity';
+import { ChartYear } from './entities/chart_year.entity';
 
 @Injectable()
 @EntityRepository(ChartWeek)
@@ -13,8 +13,16 @@ export class ChartWeekRepository extends Repository<ChartWeek> {
       .innerJoin('chart_week.user', 'user')
       .where('user.user_id = :id', { id: 1 })
       .getMany();
-    console.log(data);
     return data;
+  }
+
+  async deleteOldestWeek() {
+    const data = await this.createQueryBuilder()
+    .delete()
+    .from(ChartWeek)
+    .where("id = :id", { id: 1 })
+    .execute();
+    console.log(data);  
   }
 }
 
@@ -26,8 +34,11 @@ export class ChartMonthRepository extends Repository<ChartMonth> {
       .innerJoin('chart_month.user', 'user')
       .where('user.user_id = :id', { id: 1 })
       .getMany();
-    console.log(data);
     return data;
+  }
+
+  async deleteOldestMonth() {
+
   }
 }
 
@@ -39,7 +50,6 @@ export class ChartYearRepository extends Repository<ChartYear> {
       .innerJoin('chart_year.user', 'user')
       .where('user.user_id = :id', { id: 1 })
       .getMany();
-    console.log(data);
     return data;
   }
 }

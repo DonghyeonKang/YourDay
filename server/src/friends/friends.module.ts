@@ -1,13 +1,13 @@
 import { Module } from '@nestjs/common';
 import { FriendsController } from './friends.controller';
-import { FriendsService } from './friends.service';
+import { FriendsService } from './services/friends.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { FriendRepository } from './friend.repository';
+import { FriendRepository } from './repositories/friend.repository';
 import { UsersService } from '../users/users.service';
 import { UsersController } from '../users/users.controller';
 import { UsersModule } from '../users/users.module';
-import { FriendReqService } from './friendReq.service';
-import { ReceivedReqRepository } from './friendReq.repository';
+import { FriendReqService } from './services/friendReq.service';
+import { ReceivedReqRepository } from './repositories/friendReq.repository';
 
 @Module({
   imports: [

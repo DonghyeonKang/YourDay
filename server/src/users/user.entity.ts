@@ -10,9 +10,9 @@ import { UserStatus } from './user-Status.enum';
 import { Friend } from 'src/friends/entities/friend.entity';
 import { ReceivedReq } from '../friends/entities/friendReq.entity';
 import { Schedule } from 'src/schedule/schedule.entity';
-import { ChartWeek } from 'src/mydays/entities/mydays_week.entity';
-import { ChartMonth } from 'src/mydays/entities/mydays_month.entity';
-import { ChartYear } from 'src/mydays/entities/mydays_year.entity';
+import { ChartWeek } from 'src/chart/entities/chart_week.entity';
+import { ChartMonth } from 'src/chart/entities/chart_month.entity';
+import { ChartYear } from 'src/chart/entities/chart_year.entity';
 
 @Entity()
 export class User extends BaseEntity {
@@ -26,18 +26,21 @@ export class User extends BaseEntity {
   email: string;
 
   @Column()
+  day_Count: number;
+
+  @Column()
   ShareStatus: UserStatus;
 
-  @OneToMany((type) => ReceivedReq, (recived_req) => recived_req.user, {
-    eager: true,
+  @OneToMany(() => ReceivedReq, (received_req) => received_req.user, {
+    eager: true
   })
-  recived_reqs: ReceivedReq[];
+  received_reqs?: ReceivedReq[];
 
-  @OneToMany((type) => Friend, (friend) => friend.user, { eager: true })
-  friends: Friend[];
+  @OneToMany(() => Friend, (friend) => friend.user, { eager: true })
+  friends?: Friend[];
 
-  @OneToMany((type) => ChartWeek, (chart) => chart.user, { eager: true }) // 다른 데이터 조회시 연관된 데이터 모두 가져오기 때문에 낭비일 수 있다.
-  weekCharts: ChartWeek[]; // 한 사람이 여러개의 Chart를 가짐
+  @OneToMany((type) => ChartWeek, (chart) => chart.user, { eager: true }) 
+  weekCharts: ChartWeek[];
 
   @OneToMany((type) => ChartMonth, (chart) => chart.user, { eager: true })
   monthCharts: ChartMonth[];
@@ -46,5 +49,5 @@ export class User extends BaseEntity {
   yearCharts: ChartYear[];
 
   @OneToMany((type) => Schedule, (schedule) => schedule.user, { eager: true })
-  schedules: Schedule[]; // 한 사람이 여러개의 Chart를 가짐
+  schedules: Schedule[];
 }

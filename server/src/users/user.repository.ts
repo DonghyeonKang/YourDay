@@ -11,7 +11,6 @@ import {
 @EntityRepository(User)
 export class UserRepository extends Repository<User> {
   async getUserName(): Promise<any> {
-    //실제론 세션인 id로 가져옴 (req.session.id)에서 가져옴
     let id: BigInt = BigInt(0);
     const sessionName = '정윤수';
     let name = '';
@@ -27,30 +26,25 @@ export class UserRepository extends Repository<User> {
     return name;
   }
 
-  async getUserInfo(email: string): Promise<User[]> {
-    //실제론 세션인 id로 가져옴 (req.session.id)에서 가져옴
-    let id: BigInt = BigInt(0);
+  async getSessionInfo(): Promise<User[]> {
+    // let id: BigInt = BigInt(0);
+    
+    //TODO session_id 수정
+    const session_gmail = "dbstn6477@gmail.com";
+    const user = await this.find({ email:session_gmail });
+    return user;
+  }
 
-    //세션 수정
-    // const sessionName = "정윤수";
-    const gmail = email + '@gmail.com';
+  async getUserInfo(email: string): Promise<User[]> {
+    
+    //TODO session_id 수정
+    const gmail = email + "@gmail.com"
     const user = await this.find({ email:gmail });
     return user;
-    // await this.find({name: name})
-    // .then((user)=> {
-    //     // console.log(user);
-    //     return user;
-    //     })
-    // .catch((err)=>{
-    //     return err.response;
-    // });
   }
 
   async getUserAllFriends(): Promise<any> {
-    // return this.find();
-
-    //유저 정보 검수과정 더 필요
-
+    
     const friend_list = await this.find();
     // console.log(friend_list);
     if (!friend_list) {
@@ -69,19 +63,9 @@ export class UserRepository extends Repository<User> {
     return this.find();
 }
 
-  async getUserAllFriendReqs(): Promise<any> {
-    const received_req__list = await this.find();
-    // console.log(friend_list);
-    if (!received_req__list) {
-      throw new NotFoundException('요청목록이 비어있습니다');
-    }
 
-    const received_req = [];
-    received_req__list.forEach((req) => {
-      received_req.push(req.recived_reqs);
-    });
-    return received_req;
-  }
+
+
 
   private async checkExistByEmail(emailAddress: string): Promise<boolean> {
     // console.log(emailAddress);
@@ -124,7 +108,7 @@ export class UserRepository extends Repository<User> {
 
   async getUserByEmail(email: string): Promise<String> {
     // const { name } = searchUserDto;
-    //2
+    //
     const gmail = email + '@gmail.com';
     const exist = await this.checkExistByEmail(gmail);
     if (!exist) {
@@ -141,22 +125,6 @@ export class UserRepository extends Repository<User> {
     return found_user;
   }
 
-  async checkUserFriendReq(email: string): Promise<any> {
-    const gmail = email + '@gmail.com';
-    const found = await this.find({ email: gmail });
-
-    let check = Boolean(false);
-    const session_email = "dbstn6477@gmail.com";
-    found.forEach((req) => {
-      req.recived_reqs.map((e) => {
-        if(e.email === session_email){
-          check = Boolean(true);
-        }
-      });
-    });
-    return check;
-    
-  }
 
   async deleteUser(id: number): Promise<any> {
     const result = await this.delete(id);

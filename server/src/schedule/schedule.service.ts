@@ -66,8 +66,8 @@ export class ScheduleService {
         return wasteTime;
       }
 
-    // 데이터를 모두 정리하면, 기존의 스케쥴은 초기화 한다. 
-    async initializeTable() {
-        await this.scheduleRepository.clear(); 
+    // 전날 데이터 지우기
+    async deleteYesterdaySchedule(date) {
+        await this.scheduleRepository.deleteYesterdaySchedule(date); 
     }
 }

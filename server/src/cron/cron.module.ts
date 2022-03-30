@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { CronService } from './cron.service';
-import { ChartModule } from 'src/mydays/mydays.module';
+import { ChartModule } from 'src/chart/chart.module';
 import { scheduleModule } from 'src/schedule/schedule.module';
 import { UsersModule } from 'src/users/users.module';
 

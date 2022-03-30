@@ -1,6 +1,6 @@
 import { Controller, Get, Param } from '@nestjs/common';
-import { ChartService } from './mydays.service';
-import { ChartWeek } from './entities/mydays_week.entity';
+import { ChartService } from './chart.service';
+import { ChartWeek } from './entities/chart_week.entity';
 
 @Controller('mydays')
 export class ChartController {

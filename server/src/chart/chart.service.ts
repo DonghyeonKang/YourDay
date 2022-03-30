@@ -4,7 +4,7 @@ import {
   ChartMonthRepository,
   ChartWeekRepository,
   ChartYearRepository,
-} from './mydays.repository';
+} from './chart.repository';
 
 @Injectable()
 export class ChartService {
@@ -23,7 +23,7 @@ export class ChartService {
     data.push(await this.getChartWeek(id));
     data.push(await this.getChartMonth(id));
     data.push(await this.getChartYear(id));
-    
+
     return data;
   }
 
@@ -31,7 +31,7 @@ export class ChartService {
   async getChartWeek(id: string): Promise<any[]> {
     // chart week 데이터 가져오기
 
-    const chart = await this.chartWeekRepository.getChart();  
+    const chart = await this.chartWeekRepository.getChart();
     return chart;
   }
 
@@ -40,9 +40,9 @@ export class ChartService {
     this.chartWeekRepository.save(userData);
   }
 
-  // chart_week 테이블 초기화
-  async initializeWeek() {
-    this.chartWeekRepository.clear();
+  // week 차트의 가장 오래된 칼럼 제거
+  deleteOldestWeek() {
+    this.chartWeekRepository.deleteOldestWeek();
   }
 
   //====================== month ========================//
@@ -57,11 +57,11 @@ export class ChartService {
     this.chartMonthRepository.save(userData);
   }
 
-  // chart_month 테이블 초기화
-  async initializeMonth() {
-    this.chartMonthRepository.clear();
+  // Month 차트의 가장 오래된 칼럼 제거
+  deleteOldestMonth() {
+    this.chartWeekRepository.deleteOldestMonth();
   }
-  
+
   //====================== year ========================//
   // chart year 데이터 가져오기
   async getChartYear(id: string): Promise<any[]> {
